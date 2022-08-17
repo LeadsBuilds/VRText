@@ -1,11 +1,11 @@
-# VRText
+# VRText Alpha
 An OSC based messaging system developed exclusively for VRChat players.
 
 Currently it only works with the upcoming Chatbox in-game utilizing the endpoints specified by the VRChat team. I will improve it to support other applications in the near future!
 
 This is an work in progress, I'll release more updates and even an executable soon.
 
-![alt text for screen readers](demo.png "Text to show on mouseover").
+![VRText application screen - Alpha version](demo.png "VRText application screen - Alpha version").
 
 # Features - Share your message!
 
