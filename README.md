@@ -1,7 +1,9 @@
 # VRText
 An OSC based messaging system developed exclusively for VRChat players.
 
-This is an work in progress, I'll here more updates to share soon.
+Currently it only works with the upcoming Chatbox in-game utilizing the endpoints specified by the VRChat team. I will improve it to support other applications in the near future!
+
+This is an work in progress, I'll release more updates and even an executable soon.
 
 ![alt text for screen readers](demo.png "Text to show on mouseover").
 
@@ -13,4 +15,7 @@ You can also define the rotating change time limit starting from 10 seconds all 
 
 ## A lot more to share.
 
-This is an work in progress, I'll here more updates to share soon.
+This is an work in progress, I'll release more updates and even an executable soon. Make sure to check this repository later for up-to-second updates.
+
+
+## If you want to collaborate with the project or even create a brand new idea by using its core feel free to do so.
