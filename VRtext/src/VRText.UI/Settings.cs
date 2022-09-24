@@ -20,8 +20,6 @@ namespace VRText.src.VRText.UI
     public partial class Settings : Form
     {
         private MainForm mainForm;
-
-        private SpotifyHandler spotifyHandler;
         public Settings(MainForm parent)
         {
             this.mainForm = parent;

@@ -220,7 +220,7 @@ namespace VRText.src.VRText.UI
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::VRText.Properties.Resources.settings_header_1;
+            this.pictureBox1.Image = global::VRText.Properties.Resources.settings_header;
             this.pictureBox1.Location = new System.Drawing.Point(27, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(199, 50);

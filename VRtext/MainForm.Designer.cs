@@ -180,7 +180,7 @@ namespace VRText
             this.sendAgainButton.Name = "sendAgainButton";
             this.sendAgainButton.Size = new System.Drawing.Size(91, 30);
             this.sendAgainButton.TabIndex = 11;
-            this.sendAgainButton.Text = "Send Again";
+            this.sendAgainButton.Text = "Resend";
             this.sendAgainButton.UseVisualStyleBackColor = false;
             this.sendAgainButton.Click += new System.EventHandler(this.sendAgainButton_Click);
             // 
