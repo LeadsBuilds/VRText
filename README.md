@@ -1,5 +1,5 @@
 # VRText Alpha - Release Update 1.0.0.1
-An OSC based messaging system for VRChat.
+An OSC based messaging application for VRChat.
 
 Currently it only works with the Chatbox in-game utilizing OSC endpoints specified by the VRChat team. New features will be implemented in the future.
 
