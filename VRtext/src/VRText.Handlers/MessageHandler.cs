@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using VRText.Config;
 using SharpOSC;
 using VRText.Utils;
-using System.IO;
 
 namespace VRText.Handlers
 {
@@ -79,7 +78,18 @@ namespace VRText.Handlers
 
             foreach (ListViewItem item in listView.SelectedItems)
             {
-                listView.Items.Remove(item);
+                int previousIndex = 0;
+
+                if (item.Index > 0)
+                {
+                    previousIndex = item.Index - 1;
+                }
+
+                if (!listView.Items.ContainsKey(listView.Items[previousIndex].Name))
+                {
+                    listView.Items[previousIndex].Selected = true;
+                    listView.Items.Remove(item);
+                }
             }
 
         }

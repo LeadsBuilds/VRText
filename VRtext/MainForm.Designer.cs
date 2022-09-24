@@ -50,6 +50,7 @@ namespace VRText
             this.removeButton = new System.Windows.Forms.Button();
             this.sendButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ClearListButton = new System.Windows.Forms.Button();
             this.textInput = new VRText.src.VRText.UI.PlaceHolderTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.rotatingTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,7 +69,6 @@ namespace VRText
             this.MessageList.LabelEdit = true;
             this.MessageList.Location = new System.Drawing.Point(13, 50);
             this.MessageList.Margin = new System.Windows.Forms.Padding(10);
-            this.MessageList.MultiSelect = false;
             this.MessageList.Name = "MessageList";
             this.MessageList.Size = new System.Drawing.Size(760, 358);
             this.MessageList.TabIndex = 2;
@@ -381,6 +381,22 @@ namespace VRText
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
+            // ClearListButton
+            // 
+            this.ClearListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.ClearListButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.ClearListButton.FlatAppearance.BorderSize = 2;
+            this.ClearListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearListButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearListButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.ClearListButton.Location = new System.Drawing.Point(787, 304);
+            this.ClearListButton.Name = "ClearListButton";
+            this.ClearListButton.Size = new System.Drawing.Size(91, 30);
+            this.ClearListButton.TabIndex = 27;
+            this.ClearListButton.Text = "Clear";
+            this.ClearListButton.UseVisualStyleBackColor = false;
+            this.ClearListButton.Click += new System.EventHandler(this.ClearListButton_Click);
+            // 
             // textInput
             // 
             this.textInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
@@ -405,6 +421,7 @@ namespace VRText
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
             this.ClientSize = new System.Drawing.Size(892, 528);
+            this.Controls.Add(this.ClearListButton);
             this.Controls.Add(this.MoveItemDownButton);
             this.Controls.Add(this.MoveItemUpButton);
             this.Controls.Add(this.cooldownLabel);
@@ -462,6 +479,7 @@ namespace VRText
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button MoveItemUpButton;
         private System.Windows.Forms.Button MoveItemDownButton;
+        private System.Windows.Forms.Button ClearListButton;
     }
 }
 

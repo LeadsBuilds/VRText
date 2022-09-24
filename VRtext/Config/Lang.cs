@@ -51,7 +51,7 @@ namespace VRText.Config
                         new KeyValuePair<string, string>("typing", "caracteres restantes..."),
                         new KeyValuePair<string, string>("placeHolder", "Mensagem..."),
                         new KeyValuePair<string, string>("cooldown", "Enviando..."),
-
+                        new KeyValuePair<string, string>("ClearListButton", "Apagar tudo"),
                     };
                 break;
 
@@ -74,7 +74,7 @@ namespace VRText.Config
                         new KeyValuePair<string, string>("typing", "characters remaining..."),
                         new KeyValuePair<string, string>("placeHolder", "Message..."),
                         new KeyValuePair<string, string>("cooldown", "Sending..."),
-
+                        new KeyValuePair<string, string>("ClearListButton", "Clear all"),
                     };
                     break;
             }

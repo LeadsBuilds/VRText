@@ -321,6 +321,14 @@ namespace VRText
 
             MessageList.EndUpdate();
         }
+
+        private void ClearListButton_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in MessageList.Items)
+            {
+                MessageList.Items.Remove(item);
+            }
+        }
     }
 
 }
