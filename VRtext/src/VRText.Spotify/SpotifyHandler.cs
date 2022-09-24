@@ -1,16 +1,13 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using VRText.Handlers;
-using VRText.Config;
 
 namespace VRText.Spotify
 {
     class SpotifyHandler
     {
         private static string currentSong = "";
+        private static string prefix = "Spotify:";
         private static string GetSpotifyTrackInfo()
         {
             var proc = Process.GetProcessesByName("Spotify").FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.MainWindowTitle));
@@ -32,7 +29,7 @@ namespace VRText.Spotify
 
             if (GetSpotifyTrackInfo() != currentSong)
             {
-                MessageHandler.sendMessage("#" + GetSpotifyTrackInfo());
+                MessageHandler.sendMessage(prefix + " " + GetSpotifyTrackInfo());
                 currentSong = GetSpotifyTrackInfo();
 
             }
@@ -43,6 +40,16 @@ namespace VRText.Spotify
         {
             currentSong = GetSpotifyTrackInfo();
             return currentSong;
+        }
+
+        public static void setPrefix(string definePrefix)
+        {
+            prefix = definePrefix;
+        }
+
+        public static string getPrefix()
+        {
+            return prefix;
         }
 
 

@@ -18,7 +18,7 @@ namespace VRText
         System.Timers.Timer intervalTimer;
         private string selectedMessage = "";
 
-        public string language = "pt-BR";
+        public string language;
 
         public List<KeyValuePair<string, string>> lang;
         public MainForm()
@@ -26,7 +26,13 @@ namespace VRText
             CosturaUtility.Initialize();
             CultureInfo ci = CultureInfo.InstalledUICulture;
             ci = CultureInfo.CurrentUICulture;
-            this.language = ci.ToString();
+            this.language = "DE";//ci.ToString();
+
+            if (this.language != "pt-BR" && this.language != "en-US")
+            {
+                this.language = "en-US";
+            }
+
             Console.WriteLine("Loaded default language: " + this.language);
             this.lang = new Lang(this.language).getCurrentLanguage();
 
@@ -59,7 +65,7 @@ namespace VRText
             sendButton.Enabled = false;
             sendAgainButton.Enabled = false;
             cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 3000);
+            delay.setTimeout(() => this.coolDown(), 1000);
             textInput.Clear();
 
         }
@@ -168,7 +174,7 @@ namespace VRText
             sendButton.Enabled = false;
             sendAgainButton.Enabled = false;
             cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 3000);
+            delay.setTimeout(() => this.coolDown(), 1000);
         }
 
         private void removeButton_Click(object sender, EventArgs e)
@@ -195,11 +201,6 @@ namespace VRText
             cooldownLabel.Text = this.lang.SingleOrDefault(x => x.Key == "cooldown").Value;
         }
 
-        private void GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/LeadsBuilds");
-        }
-
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             SolidBrush backColor = new SolidBrush(Color.FromArgb(16, 40, 47));
@@ -220,9 +221,10 @@ namespace VRText
 
         public void setComponentLanguage()
         {
+
             foreach (Control ctrl in this.Controls)
             {
-                if(ctrl.Name == "logoLabel" || ctrl.Name == "GitHub")
+                if (ctrl.Name == "logoLabel" || ctrl.Name == "GitHub")
                 {
                     continue;
                 }
@@ -267,15 +269,58 @@ namespace VRText
         private void aboutButton_Click(object sender, EventArgs e)
         {
             Form about = new AboutForm();
-            about.Show();
+
+            if (Application.OpenForms["AboutForm"] == null)
+            {
+                about.Show();
+            }
+
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
             Form settings = new Settings(this);
-            settings.Show();
+
+            if (Application.OpenForms["Settings"] == null)
+            {
+                settings.Show();
+            }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageList.BeginUpdate();
+
+            foreach (ListViewItem selectedItem in MessageList.SelectedItems)
+            {
+                if (selectedItem.Index > 0)
+                {
+                    int index = selectedItem.Index - 1;
+                    MessageList.Items.RemoveAt(selectedItem.Index);
+                    MessageList.Items.Insert(index, selectedItem);
+                }
+            }
+
+            MessageList.EndUpdate();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            MessageList.BeginUpdate();
+
+            foreach (ListViewItem selectedItem in MessageList.SelectedItems)
+            {
+                if (selectedItem.Index >= 0 && selectedItem.Index < MessageList.Items.Count - 1)
+                {
+                    int index = selectedItem.Index + 1;
+                    MessageList.Items.RemoveAt(selectedItem.Index);
+                    MessageList.Items.Insert(index, selectedItem);
+                }
+            }
+
+            MessageList.EndUpdate();
+        }
     }
 
 }

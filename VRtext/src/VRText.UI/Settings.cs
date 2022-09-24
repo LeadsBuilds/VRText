@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using SharpOSC;
 using VRText.Config;
 using VRText.Utils;
+using VRText.Spotify;
 using System.Threading;
 using System.Net.Sockets;
 
@@ -19,6 +20,8 @@ namespace VRText.src.VRText.UI
     public partial class Settings : Form
     {
         private MainForm mainForm;
+
+        private SpotifyHandler spotifyHandler;
         public Settings(MainForm parent)
         {
             this.mainForm = parent;
@@ -29,7 +32,7 @@ namespace VRText.src.VRText.UI
 
         private void InitializeSettings()
         {
-
+            this.SpotifyPrefixInput.Text = SpotifyHandler.getPrefix();
             serverAddressInput.Text = OSC.getAddress();
             portInput.Text = OSC.getAddressPort().ToString();
         }
@@ -95,6 +98,24 @@ namespace VRText.src.VRText.UI
                 inputMessage = new OscMessage(OSC.getTypingEndPoint(), false);
                 sendMessage.Send(inputMessage);
             }, 2000);
+        }
+
+        private void ResetSettings_Click(object sender, EventArgs e)
+        {
+            OSC.setNewAddress("127.0.0.1", "9000");
+            serverAddressInput.Text = "127.0.0.1";
+            portInput.Text = "9000";
+            testLabel.Text = "Default settings have been set.";
+        }
+
+        private void SpotifyPrefixInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            SpotifyHandler.setPrefix(SpotifyPrefixInput.Text);
+        }
+
+        private void GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/LeadsBuilds");
         }
     }
 }

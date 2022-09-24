@@ -29,7 +29,7 @@ namespace VRText
         /// </summary>
         private void InitializeComponent()
         {
-            this.sendButton = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MessageList = new System.Windows.Forms.ListView();
             this.spotifyCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,38 +37,23 @@ namespace VRText
             this.rotatingTime = new System.Windows.Forms.NumericUpDown();
             this.rotateCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.removeButton = new System.Windows.Forms.Button();
             this.sendAgainButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
             this.spotifyLabel = new System.Windows.Forms.Label();
-            this.GitHub = new System.Windows.Forms.LinkLabel();
-            this.logoLabel = new System.Windows.Forms.Label();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.aboutButton = new System.Windows.Forms.Button();
             this.settingsLabel = new System.Windows.Forms.Label();
             this.addButtonLabel = new System.Windows.Forms.Label();
             this.cooldownLabel = new System.Windows.Forms.Label();
+            this.MoveItemDownButton = new System.Windows.Forms.Button();
+            this.MoveItemUpButton = new System.Windows.Forms.Button();
+            this.aboutButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textInput = new VRText.src.VRText.UI.PlaceHolderTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.rotatingTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // sendButton
-            // 
-            this.sendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.sendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
-            this.sendButton.FlatAppearance.BorderSize = 2;
-            this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendButton.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.sendButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.sendButton.Location = new System.Drawing.Point(627, 413);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(95, 49);
-            this.sendButton.TabIndex = 0;
-            this.sendButton.Text = "Send";
-            this.sendButton.UseMnemonic = false;
-            this.sendButton.UseVisualStyleBackColor = false;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // MessageList
             // 
@@ -145,7 +130,7 @@ namespace VRText
             0,
             0});
             this.rotatingTime.Minimum = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -183,22 +168,6 @@ namespace VRText
             this.label2.TabIndex = 9;
             this.label2.Text = "seconds";
             // 
-            // removeButton
-            // 
-            this.removeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.removeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
-            this.removeButton.FlatAppearance.BorderSize = 2;
-            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
-            this.removeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.removeButton.Location = new System.Drawing.Point(787, 170);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(91, 29);
-            this.removeButton.TabIndex = 10;
-            this.removeButton.Text = "Remove selected";
-            this.removeButton.UseVisualStyleBackColor = false;
-            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
-            // 
             // sendAgainButton
             // 
             this.sendAgainButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
@@ -207,32 +176,13 @@ namespace VRText
             this.sendAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sendAgainButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendAgainButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.sendAgainButton.Location = new System.Drawing.Point(787, 237);
+            this.sendAgainButton.Location = new System.Drawing.Point(787, 256);
             this.sendAgainButton.Name = "sendAgainButton";
             this.sendAgainButton.Size = new System.Drawing.Size(91, 30);
             this.sendAgainButton.TabIndex = 11;
             this.sendAgainButton.Text = "Send Again";
             this.sendAgainButton.UseVisualStyleBackColor = false;
             this.sendAgainButton.Click += new System.EventHandler(this.sendAgainButton_Click);
-            // 
-            // AddButton
-            // 
-            this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
-            this.AddButton.FlatAppearance.BorderSize = 2;
-            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddButton.Font = new System.Drawing.Font("Segoe UI Historic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.AddButton.Location = new System.Drawing.Point(726, 413);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(44, 49);
-            this.AddButton.TabIndex = 12;
-            this.AddButton.Text = "+";
-            this.AddButton.UseCompatibleTextRendering = true;
-            this.AddButton.UseVisualStyleBackColor = false;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            this.AddButton.MouseLeave += new System.EventHandler(this.addButtonLabel_MouseLeave);
-            this.AddButton.MouseHover += new System.EventHandler(this.addButtonLabel_MouseHover);
             // 
             // spotifyLabel
             // 
@@ -247,69 +197,6 @@ namespace VRText
             this.spotifyLabel.TabIndex = 13;
             this.spotifyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.spotifyLabel.Visible = false;
-            // 
-            // GitHub
-            // 
-            this.GitHub.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.GitHub.AutoSize = true;
-            this.GitHub.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GitHub.LinkColor = System.Drawing.Color.Silver;
-            this.GitHub.Location = new System.Drawing.Point(559, 26);
-            this.GitHub.Name = "GitHub";
-            this.GitHub.Size = new System.Drawing.Size(216, 19);
-            this.GitHub.TabIndex = 16;
-            this.GitHub.TabStop = true;
-            this.GitHub.Text = "https://github.com/LeadsBuilds";
-            this.GitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.GitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHub_LinkClicked);
-            // 
-            // logoLabel
-            // 
-            this.logoLabel.AutoSize = true;
-            this.logoLabel.Font = new System.Drawing.Font("Winter Sunday", 30F);
-            this.logoLabel.ForeColor = System.Drawing.Color.Snow;
-            this.logoLabel.Location = new System.Drawing.Point(486, 15);
-            this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(77, 48);
-            this.logoLabel.TabIndex = 17;
-            this.logoLabel.Text = "VRText";
-            this.logoLabel.UseCompatibleTextRendering = true;
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
-            this.settingsButton.FlatAppearance.BorderSize = 2;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Segoe UI Historic", 14F);
-            this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Location = new System.Drawing.Point(775, 50);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(34, 30);
-            this.settingsButton.TabIndex = 18;
-            this.settingsButton.Text = "⚙";
-            this.settingsButton.UseCompatibleTextRendering = true;
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            this.settingsButton.MouseLeave += new System.EventHandler(this.settingsButton_MouseLeave);
-            this.settingsButton.MouseHover += new System.EventHandler(this.settingsButton_MouseHover);
-            // 
-            // aboutButton
-            // 
-            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.aboutButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
-            this.aboutButton.FlatAppearance.BorderSize = 2;
-            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutButton.ForeColor = System.Drawing.Color.White;
-            this.aboutButton.Location = new System.Drawing.Point(811, 50);
-            this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(77, 30);
-            this.aboutButton.TabIndex = 19;
-            this.aboutButton.Text = "ⓘ About";
-            this.aboutButton.UseCompatibleTextRendering = true;
-            this.aboutButton.UseVisualStyleBackColor = false;
-            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // settingsLabel
             // 
@@ -331,7 +218,7 @@ namespace VRText
             this.addButtonLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.addButtonLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.addButtonLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addButtonLabel.Location = new System.Drawing.Point(729, 386);
+            this.addButtonLabel.Location = new System.Drawing.Point(716, 386);
             this.addButtonLabel.Name = "addButtonLabel";
             this.addButtonLabel.Padding = new System.Windows.Forms.Padding(5);
             this.addButtonLabel.Size = new System.Drawing.Size(39, 25);
@@ -351,6 +238,148 @@ namespace VRText
             this.cooldownLabel.TabIndex = 23;
             this.cooldownLabel.Text = "3 seconds cooldown...";
             this.cooldownLabel.Visible = false;
+            // 
+            // MoveItemDownButton
+            // 
+            this.MoveItemDownButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MoveItemDownButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.MoveItemDownButton.FlatAppearance.BorderSize = 2;
+            this.MoveItemDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveItemDownButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.MoveItemDownButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.MoveItemDownButton.Image = global::VRText.Properties.Resources.arrow_down;
+            this.MoveItemDownButton.Location = new System.Drawing.Point(787, 205);
+            this.MoveItemDownButton.Name = "MoveItemDownButton";
+            this.MoveItemDownButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MoveItemDownButton.Size = new System.Drawing.Size(91, 29);
+            this.MoveItemDownButton.TabIndex = 26;
+            this.MoveItemDownButton.UseVisualStyleBackColor = false;
+            this.MoveItemDownButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // MoveItemUpButton
+            // 
+            this.MoveItemUpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.MoveItemUpButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.MoveItemUpButton.FlatAppearance.BorderSize = 2;
+            this.MoveItemUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveItemUpButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.MoveItemUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.MoveItemUpButton.Image = global::VRText.Properties.Resources.arrow_up;
+            this.MoveItemUpButton.Location = new System.Drawing.Point(787, 135);
+            this.MoveItemUpButton.Name = "MoveItemUpButton";
+            this.MoveItemUpButton.Size = new System.Drawing.Size(91, 29);
+            this.MoveItemUpButton.TabIndex = 25;
+            this.MoveItemUpButton.UseVisualStyleBackColor = false;
+            this.MoveItemUpButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // aboutButton
+            // 
+            this.aboutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.aboutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.aboutButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.aboutButton.FlatAppearance.BorderSize = 2;
+            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutButton.ForeColor = System.Drawing.Color.White;
+            this.aboutButton.Image = global::VRText.Properties.Resources.info;
+            this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.aboutButton.Location = new System.Drawing.Point(811, 50);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(77, 30);
+            this.aboutButton.TabIndex = 19;
+            this.aboutButton.Text = "About";
+            this.aboutButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.aboutButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.aboutButton.UseCompatibleTextRendering = true;
+            this.aboutButton.UseVisualStyleBackColor = false;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.settingsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingsButton.BackgroundImage")));
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.settingsButton.FlatAppearance.BorderSize = 2;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Segoe UI Historic", 14F);
+            this.settingsButton.ForeColor = System.Drawing.Color.White;
+            this.settingsButton.Location = new System.Drawing.Point(775, 50);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(34, 30);
+            this.settingsButton.TabIndex = 18;
+            this.settingsButton.UseCompatibleTextRendering = true;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsButton.MouseLeave += new System.EventHandler(this.settingsButton_MouseLeave);
+            this.settingsButton.MouseHover += new System.EventHandler(this.settingsButton_MouseHover);
+            // 
+            // AddButton
+            // 
+            this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.AddButton.FlatAppearance.BorderSize = 2;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddButton.Font = new System.Drawing.Font("Segoe UI Historic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.AddButton.Image = global::VRText.Properties.Resources.add2;
+            this.AddButton.Location = new System.Drawing.Point(726, 413);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(44, 49);
+            this.AddButton.TabIndex = 12;
+            this.AddButton.UseCompatibleTextRendering = true;
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.AddButton.MouseLeave += new System.EventHandler(this.addButtonLabel_MouseLeave);
+            this.AddButton.MouseHover += new System.EventHandler(this.addButtonLabel_MouseHover);
+            // 
+            // removeButton
+            // 
+            this.removeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.removeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.removeButton.FlatAppearance.BorderSize = 2;
+            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.removeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.removeButton.Image = global::VRText.Properties.Resources.bin;
+            this.removeButton.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.removeButton.Location = new System.Drawing.Point(787, 170);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(91, 29);
+            this.removeButton.TabIndex = 10;
+            this.removeButton.Text = "Remove selected";
+            this.removeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // sendButton
+            // 
+            this.sendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.sendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
+            this.sendButton.FlatAppearance.BorderSize = 2;
+            this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendButton.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.sendButton.Image = global::VRText.Properties.Resources.send;
+            this.sendButton.Location = new System.Drawing.Point(627, 413);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(95, 49);
+            this.sendButton.TabIndex = 0;
+            this.sendButton.Text = "Send";
+            this.sendButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.sendButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.sendButton.UseMnemonic = false;
+            this.sendButton.UseVisualStyleBackColor = false;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::VRText.Properties.Resources.logoSmall;
+            this.pictureBox1.Location = new System.Drawing.Point(606, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(164, 39);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // textInput
             // 
@@ -376,6 +405,8 @@ namespace VRText
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
             this.ClientSize = new System.Drawing.Size(892, 528);
+            this.Controls.Add(this.MoveItemDownButton);
+            this.Controls.Add(this.MoveItemUpButton);
             this.Controls.Add(this.cooldownLabel);
             this.Controls.Add(this.textInput);
             this.Controls.Add(this.addButtonLabel);
@@ -383,7 +414,6 @@ namespace VRText
             this.Controls.Add(this.rotatingTime);
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.GitHub);
             this.Controls.Add(this.spotifyLabel);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.sendAgainButton);
@@ -395,13 +425,15 @@ namespace VRText
             this.Controls.Add(this.spotifyCheckBox);
             this.Controls.Add(this.MessageList);
             this.Controls.Add(this.sendButton);
-            this.Controls.Add(this.logoLabel);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "VRText";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rotatingTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,14 +453,15 @@ namespace VRText
         private System.Windows.Forms.Button sendAgainButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label spotifyLabel;
-        private System.Windows.Forms.LinkLabel GitHub;
-        private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Button aboutButton;
         private System.Windows.Forms.Label settingsLabel;
         private System.Windows.Forms.Label addButtonLabel;
         private src.VRText.UI.PlaceHolderTextBox textInput;
         private System.Windows.Forms.Label cooldownLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button MoveItemUpButton;
+        private System.Windows.Forms.Button MoveItemDownButton;
     }
 }
 

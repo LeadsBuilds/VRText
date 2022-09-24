@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using VRText.Config;
 using SharpOSC;
 using VRText.Utils;
+using System.IO;
 
 namespace VRText.Handlers
 {
@@ -29,6 +30,8 @@ namespace VRText.Handlers
 
         public static void saveLog(ListView listView, string message)
         {
+            
+
             var item = new ListViewItem(new[] { message, DateTime.Now.ToString("HH:mm:ss") });
             listView.Items.Add(item);
         }

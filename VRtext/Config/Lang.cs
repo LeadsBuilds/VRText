@@ -41,16 +41,16 @@ namespace VRText.Config
                         new KeyValuePair<string, string>("spotifyCheckBox", "Status do spotify"),
                         new KeyValuePair<string, string>("rotateCheckBox", "Rodar lista a cada"),
                         new KeyValuePair<string, string>("label2", "segundos"),
-                        new KeyValuePair<string, string>("AddButton", "+"),
+                        new KeyValuePair<string, string>("AddButton", ""),
                         new KeyValuePair<string, string>("addButtonLabel", "Adicionar à lista sem enviar"),
                         new KeyValuePair<string, string>("spotifyLabel", "🎵 Não é possível utilizar a lista rotativa enquanto o status do Spotify estiver habilitado."),
-                        new KeyValuePair<string, string>("aboutButton", "ⓘ Sobre"),
-                        new KeyValuePair<string, string>("settingsButton", "⚙"),
+                        new KeyValuePair<string, string>("aboutButton", " Sobre"),
+                        new KeyValuePair<string, string>("settingsButton", ""),
                         new KeyValuePair<string, string>("settingsLabel", "Configurações"),
                         new KeyValuePair<string, string>("rotatingTime", "10"),
                         new KeyValuePair<string, string>("typing", "caracteres restantes..."),
                         new KeyValuePair<string, string>("placeHolder", "Mensagem..."),
-                        new KeyValuePair<string, string>("cooldown", "Aguarde 3 segundos..."),
+                        new KeyValuePair<string, string>("cooldown", "Enviando..."),
 
                     };
                 break;
@@ -64,16 +64,16 @@ namespace VRText.Config
                         new KeyValuePair<string, string>("spotifyCheckBox", "Spotify Status"),
                         new KeyValuePair<string, string>("rotateCheckBox", "Rotate list each"),
                         new KeyValuePair<string, string>("label2", "seconds"),
-                        new KeyValuePair<string, string>("AddButton", "+"),
-                        new KeyValuePair<string, string>("addButtonLabel", "Add do list without sending"),
+                        new KeyValuePair<string, string>("AddButton", ""),
+                        new KeyValuePair<string, string>("addButtonLabel", "Add to list without sending it"),
                         new KeyValuePair<string, string>("spotifyLabel", "🎵 You are unable to use the rotating list while Spotify status is enabled."),
-                        new KeyValuePair<string, string>("aboutButton", "ⓘ About"),
-                        new KeyValuePair<string, string>("settingsButton", "⚙"),
+                        new KeyValuePair<string, string>("aboutButton", " About"),
+                        new KeyValuePair<string, string>("settingsButton", ""),
                         new KeyValuePair<string, string>("settingsLabel", "Settings"),
                         new KeyValuePair<string, string>("rotatingTime", "10"),
                         new KeyValuePair<string, string>("typing", "characters remaining..."),
                         new KeyValuePair<string, string>("placeHolder", "Message..."),
-                        new KeyValuePair<string, string>("cooldown", "3 seconds cooldown..."),
+                        new KeyValuePair<string, string>("cooldown", "Sending..."),
 
                     };
                     break;
