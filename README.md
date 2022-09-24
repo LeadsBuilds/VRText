@@ -1,21 +1,30 @@
-# VRText Alpha
-An OSC based messaging system developed exclusively for VRChat players.
+# VRText Alpha - Release Update 1.0.0.1
+An OSC based messaging system for VRChat.
 
-Currently it only works with the upcoming Chatbox in-game utilizing the endpoints specified by the VRChat team. I will improve it to support other applications in the near future!
+Currently it only works with the Chatbox in-game utilizing OSC endpoints specified by the VRChat team. New features will be implemented in the future.
 
-This is an work in progress, I'll release more updates and even an executable soon.
+I'm proud to announce that VRText's got its first release, the executable is already available for download.
 
 ![VRText application screen - Alpha version](demo.png "VRText application screen - Alpha version").
 
 # Features - Share your message!
 
 - Create a custom list of sentences that you want to share with your friends and as long as you keep the option enabled, your list will be rotating automatically until you stop it.
-You can also define the rotating change time limit starting from 10 seconds all up to a lot :)
-- You can share your current song from Spotify with changes in real time as soon as your playlist plays or you skip the song.
+You can also define the rotating change time limit starting from 5 seconds all up to a lot :)
+- You can share your current song from Spotify with changes in real time as soon as your song updates. *Only works with the desktop application, it doesn't work with the web player.
 
-## A lot more to share.
+# How to use
 
-This is an work in progress, I'll release more updates and even an executable soon. Make sure to check this repository later for up-to-second updates.
+- Inside the game make sure you have the OSC server enabled.
+
+![VRChat OSC Menu](oscdemo.png "VRChat OSC Menu").
+
+
+- Start VRText and try to send a message, if you look up you may see it popping up right above your head.
+
+![VRChat OSC Menu](popdemo.png "VRChat OSC Menu").
+
+Now you can start sharing what you want to say or your music, be creative! :)
 
 
 ## If you want to collaborate with the project or even create a brand new idea by using its core feel free to do so.
