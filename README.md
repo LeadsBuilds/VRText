@@ -5,7 +5,7 @@ Currently it only works with the Chatbox in-game utilizing OSC endpoints specifi
 
 I'm proud to announce that VRText's got its first release, the executable is already available for download.
 
-![VRText application screen - Alpha version](demo.png "VRText application screen - Alpha version").
+![VRText application screen - Alpha version](demo.png "VRText application screen - Alpha version")
 
 # Features - Share your message!
 
@@ -17,12 +17,12 @@ You can also define the rotating change time limit starting from 5 seconds all u
 
 - Inside the game make sure you have the OSC server enabled.
 
-![VRChat OSC Menu](oscdemo.png "VRChat OSC Menu").
+![VRChat OSC Menu](oscdemo.png "VRChat OSC Menu")
 
 
 - Start VRText and try to send a message, if you look up you may see it popping up right above your head.
 
-![VRChat OSC Menu](popdemo.png "VRChat OSC Menu").
+![VRChat OSC Menu](popdemo.png "VRChat OSC Menu")
 
 Now you can start sharing what you want to say or your music, be creative! :)
 
