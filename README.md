@@ -24,6 +24,9 @@ You can also define the rotating change time limit starting from 5 seconds all u
 
 ![VRChat OSC Menu](popdemo.png "VRChat OSC Menu")
 
+If it doesn't work right away keep the OSC enabled, restart the game and try again.
+
+
 Now you can start sharing what you want to say or your music, be creative! :)
 
 
