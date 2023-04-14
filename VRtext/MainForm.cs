@@ -168,13 +168,21 @@ namespace VRText
 
         private void sendAgainButton_Click(object sender, EventArgs e)
         {
-            MessageHandler.sendMessage(this.selectedMessage);
-            Interval delay = new Interval();
-            textInput.Enabled = false;
-            sendButton.Enabled = false;
-            sendAgainButton.Enabled = false;
-            cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 1000);
+            textInput.Select();
+            textInput.Text = selectedMessage;
+            textInput.Select(textInput.Text.Length, 0);
+            
+            // this was kind of annoying sending again would just send it automatically,
+            // for my purpose I like having the ability to edit the message before sending again in case of spelling mistakes
+            
+            
+            // MessageHandler.sendMessage(this.selectedMessage);
+            // Interval delay = new Interval();
+            // textInput.Enabled = false;
+            // sendButton.Enabled = false;
+            // sendAgainButton.Enabled = false;
+            // cooldownLabel.Visible = true;
+            // delay.setTimeout(() => this.coolDown(), 1000);
         }
 
         private void removeButton_Click(object sender, EventArgs e)
