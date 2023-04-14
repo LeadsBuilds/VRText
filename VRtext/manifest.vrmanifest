@@ -1,0 +1,17 @@
+{
+    "source": "builtin",
+    "applications": [
+        {
+            "app_key": "app.VRText",
+            "launch_type": "binary",
+            "binary_path_windows": "VRText.exe",
+            "is_dashboard_overlay": true,
+            "strings": {
+                "en_us": {
+                    "name": "VRText",
+                    "description": "1"
+                }
+            }
+        }
+    ]
+}

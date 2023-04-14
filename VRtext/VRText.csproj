@@ -328,13 +328,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="VRText_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\VRText.App\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -361,6 +357,9 @@
     <None Include="Resources\logoSmall.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="manifest.vrmanifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\add2.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\settings-header-1.png" />
