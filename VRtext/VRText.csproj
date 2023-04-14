@@ -296,6 +296,10 @@
       <DependentUpon>SpotifyIntegration.cs</DependentUpon>
     </Compile>
     <Compile Include="src\VRText.Utils\Interval.cs" />
+    <EmbeddedResource Include="Localization\en-US.txt" />
+    <EmbeddedResource Include="Localization\pt-BR.txt" />
+    <EmbeddedResource Include="Localization\it-IT.txt" />
+    <EmbeddedResource Include="Localization\de-DE.txt" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

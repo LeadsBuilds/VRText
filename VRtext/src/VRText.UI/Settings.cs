@@ -48,12 +48,18 @@ namespace VRText.src.VRText.UI
                 case "Português do Brasil":
                     variant = "pt-BR";
                     break;
+                case "Deutsch":
+                    variant = "de-DE";
+                    break;
+                case "Italiano":
+                    variant = "it-IT";
+                    break;
                 default:
                     variant = "pt-BR";
                     break;
             }
 
-            this.mainForm.lang = new Lang(variant).getCurrentLanguage();
+            this.mainForm.lang = new Lang(variant).GetCurrentLanguage();
             this.mainForm.setComponentLanguage();
             this.mainForm.language = variant;
         }
@@ -63,20 +69,24 @@ namespace VRText.src.VRText.UI
             string currentLanguage = this.mainForm.language;
             Console.WriteLine(currentLanguage);
 
-            if (currentLanguage == "en-US")
+            switch (currentLanguage)
             {
-                languageOptions.SelectedItem = "English";
+                case "en-US":
+                    languageOptions.SelectedItem = "English";
 
-                return;
+                    return;
+                case "pt-BR":
+                    languageOptions.SelectedItem = "Português do Brasil";
+
+                    return;
+                case "de-DE":
+                    languageOptions.SelectedItem = "Deutsch";
+
+                    return;
+                case "it-IT":
+                    languageOptions.SelectedItem = "Italiano";
+                    break;
             }
-
-            if (currentLanguage == "pt-BR")
-            {
-                languageOptions.SelectedItem = "Português do Brasil";
-
-                return;
-            }
-
         }
 
         private void testConnectionButton_Click(object sender, EventArgs e)

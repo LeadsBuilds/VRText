@@ -54,7 +54,10 @@ namespace VRText.src.VRText.UI
             this.languageOptions.FormattingEnabled = true;
             this.languageOptions.Items.AddRange(new object[] {
             "English",
-            "Português do Brasil"});
+            "Português do Brasil",
+            "Deutsch",
+            "Italiano"
+            });
             this.languageOptions.Location = new System.Drawing.Point(27, 102);
             this.languageOptions.Name = "languageOptions";
             this.languageOptions.Size = new System.Drawing.Size(153, 28);
