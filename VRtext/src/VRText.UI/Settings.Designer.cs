@@ -56,7 +56,9 @@ namespace VRText.src.VRText.UI
             "English",
             "Português do Brasil",
             "Deutsch",
-            "Italiano"
+            "Italiano",
+            "Français",
+            "Norsk"
             });
             this.languageOptions.Location = new System.Drawing.Point(27, 102);
             this.languageOptions.Name = "languageOptions";

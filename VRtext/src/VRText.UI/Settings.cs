@@ -83,6 +83,14 @@ namespace VRText.src.VRText.UI
                     languageOptions.SelectedItem = "Deutsch";
 
                     return;
+                case "fr-FR":
+                    languageOptions.SelectedItem = "Français";
+
+                    return;
+                case "no-NO":
+                    languageOptions.SelectedItem = "Norsk";
+
+                    return;
                 case "it-IT":
                     languageOptions.SelectedItem = "Italiano";
                     break;
