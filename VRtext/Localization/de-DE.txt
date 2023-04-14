@@ -2,7 +2,7 @@
 label1=Nachrichtenverlauf:
 removeButton=Löschen
 sendAgainButton=Erneut senden
-spotifyCheckBox=Spotify-Status
+spotifyCheckBox=Spotify Status
 rotateCheckBox=Liste rotieren alle
 label2=Sekunden
 AddButton=
