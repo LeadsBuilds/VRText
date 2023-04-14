@@ -78,6 +78,7 @@ namespace VRText
                 cooldownLabel.Visible = false;
                 sendButton.Enabled = true;
                 sendAgainButton.Enabled = true;
+                textInput.Select();
             });
 
         }
