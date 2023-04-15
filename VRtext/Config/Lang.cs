@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace VRText.Config
 {
@@ -23,6 +24,7 @@ namespace VRText.Config
 
             if (resourceStream == null)
             {
+                MessageBox.Show($"Resource {resourceName} not found in assembly\nor has not been implemented.");
                 throw new ArgumentException($"Resource {resourceName} not found in assembly.");
             }
 

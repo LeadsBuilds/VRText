@@ -1,10 +1,10 @@
 sendButton=Send
-label1=Message history:
+chatBoxLabel=Message history:
 removeButton=Remove
 sendAgainButton=Send Again
 spotifyCheckBox=Spotify Status
 rotateCheckBox=Rotate list every
-label2=seconds
+secondLabel=seconds
 AddButton=
 addButtonLabel=Add to list without sending it
 spotifyLabel=🎵 You are unable to use the rotating list while Spotify status is enabled.

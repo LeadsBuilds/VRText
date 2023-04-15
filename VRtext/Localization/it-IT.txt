@@ -1,10 +1,10 @@
 ﻿sendButton=Invia
-label1=Cronologia dei messaggi:
+chatBoxLabel=Cronologia dei messaggi:
 removeButton=Rimuovi
 sendAgainButton=Invia di nuovo
 spotifyCheckBox=Stato Spotify
 rotateCheckBox=Ruota lista ogni
-label2=secondi
+secondLabel=secondi
 AddButton=
 addButtonLabel=Aggiungi alla lista senza inviarlo
 spotifyLabel=🎵 Non puoi utilizzare la lista in rotazione mentre lo stato di Spotify è abilitato.

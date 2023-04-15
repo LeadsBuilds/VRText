@@ -1,10 +1,10 @@
 ﻿sendButton=Senden
-label1=Nachrichtenverlauf:
+chatBoxLabel=Nachrichtenverlauf:
 removeButton=Löschen
 sendAgainButton=Erneut senden
 spotifyCheckBox=Spotify Status
 rotateCheckBox=Liste rotieren alle
-label2=Sekunden
+secondLabel=Sekunden
 AddButton=
 addButtonLabel=Zur Liste hinzufügen, ohne sie zu senden
 spotifyLabel=🎵 Sie können die rotierenende Liste nicht verwenden, während der Spotify-Status aktiviert ist.

@@ -32,11 +32,11 @@ namespace VRText
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MessageList = new System.Windows.Forms.ListView();
             this.spotifyCheckBox = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.chatBoxLabel = new System.Windows.Forms.Label();
             this.TypingLabel = new System.Windows.Forms.Label();
             this.rotatingTime = new System.Windows.Forms.NumericUpDown();
             this.rotateCheckBox = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.secondLabel = new System.Windows.Forms.Label();
             this.sendAgainButton = new System.Windows.Forms.Button();
             this.spotifyLabel = new System.Windows.Forms.Label();
             this.settingsLabel = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@ namespace VRText
             this.spotifyCheckBox.UseVisualStyleBackColor = true;
             this.spotifyCheckBox.CheckedChanged += new System.EventHandler(this.spotifyCheckBox_CheckedChanged);
             // 
-            // label1
+            // chatBoxLabel
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
