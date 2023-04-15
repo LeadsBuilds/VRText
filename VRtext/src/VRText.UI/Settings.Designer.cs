@@ -40,7 +40,7 @@ namespace VRText.src.VRText.UI
             this.SpotifyPrefixLabel = new System.Windows.Forms.Label();
             this.SpotifyPrefixInput = new System.Windows.Forms.TextBox();
             this.ResetSettings = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.CopyrightLabel = new System.Windows.Forms.Label();
             this.GitHub = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,7 +84,7 @@ namespace VRText.src.VRText.UI
             this.testConnectionButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.testConnectionButton.FlatAppearance.BorderSize = 2;
             this.testConnectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testConnectionButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.testConnectionButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.testConnectionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.testConnectionButton.Location = new System.Drawing.Point(209, 208);
             this.testConnectionButton.Name = "testConnectionButton";
@@ -128,7 +128,7 @@ namespace VRText.src.VRText.UI
             // OSCConnectionLabel
             // 
             this.OSCConnectionLabel.AutoSize = true;
-            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 12F);
+            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.OSCConnectionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.OSCConnectionLabel.Location = new System.Drawing.Point(209, 72);
             this.OSCConnectionLabel.Name = "OSCConnectionLabel";
@@ -141,7 +141,7 @@ namespace VRText.src.VRText.UI
             // 
             this.testLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.testLabel.AutoSize = true;
-            this.testLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
+            this.testLabel.Font = new System.Drawing.Font("Segoe UI Historic", 5F);
             this.testLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.testLabel.Location = new System.Drawing.Point(225, 184);
             this.testLabel.Name = "testLabel";
@@ -185,7 +185,7 @@ namespace VRText.src.VRText.UI
             this.ResetSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.ResetSettings.FlatAppearance.BorderSize = 2;
             this.ResetSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetSettings.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.ResetSettings.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.ResetSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.ResetSettings.Location = new System.Drawing.Point(324, 208);
             this.ResetSettings.Name = "ResetSettings";
@@ -196,17 +196,17 @@ namespace VRText.src.VRText.UI
             this.ResetSettings.UseVisualStyleBackColor = false;
             this.ResetSettings.Click += new System.EventHandler(this.ResetSettings_Click);
             // 
-            // label1
+            // CopyrightLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.label1.Location = new System.Drawing.Point(12, 247);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "2022 LeadsBuilds";
-            this.label1.UseCompatibleTextRendering = true;
+            this.CopyrightLabel.AutoSize = true;
+            this.CopyrightLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9F);
+            this.CopyrightLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
+            this.CopyrightLabel.Location = new System.Drawing.Point(12, 247);
+            this.CopyrightLabel.Name = "CopyrightLabel";
+            this.CopyrightLabel.Size = new System.Drawing.Size(98, 20);
+            this.CopyrightLabel.TabIndex = 31;
+            this.CopyrightLabel.Text = "2022 LeadsBuilds";
+            this.CopyrightLabel.UseCompatibleTextRendering = true;
             // 
             // GitHub
             // 
@@ -240,7 +240,7 @@ namespace VRText.src.VRText.UI
             this.ClientSize = new System.Drawing.Size(410, 272);
             this.Controls.Add(this.GitHub);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CopyrightLabel);
             this.Controls.Add(this.ResetSettings);
             this.Controls.Add(this.SpotifyPrefixInput);
             this.Controls.Add(this.SpotifyPrefixLabel);
@@ -275,7 +275,7 @@ namespace VRText.src.VRText.UI
         private System.Windows.Forms.Label SpotifyPrefixLabel;
         private System.Windows.Forms.TextBox SpotifyPrefixInput;
         private System.Windows.Forms.Button ResetSettings;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label CopyrightLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel GitHub;
     }

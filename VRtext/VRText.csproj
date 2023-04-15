@@ -300,6 +300,7 @@
     <EmbeddedResource Include="Localization\pt-BR.txt" />
     <EmbeddedResource Include="Localization\it-IT.txt" />
     <EmbeddedResource Include="Localization\de-DE.txt" />
+    <EmbeddedResource Include="Localization\fr-FR.txt" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
