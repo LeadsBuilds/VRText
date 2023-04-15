@@ -93,14 +93,14 @@ namespace VRText
             // 
             // chatBoxLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 26);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Message history:";
+            this.chatBoxLabel.AutoSize = true;
+            this.chatBoxLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chatBoxLabel.ForeColor = System.Drawing.Color.Snow;
+            this.chatBoxLabel.Location = new System.Drawing.Point(12, 19);
+            this.chatBoxLabel.Name = "chatBoxLabel";
+            this.chatBoxLabel.Size = new System.Drawing.Size(152, 26);
+            this.chatBoxLabel.TabIndex = 4;
+            this.chatBoxLabel.Text = "Message history:";
             // 
             // TypingLabel
             // 
@@ -157,16 +157,16 @@ namespace VRText
             this.rotateCheckBox.UseVisualStyleBackColor = true;
             this.rotateCheckBox.CheckedChanged += new System.EventHandler(this.rotateCheckbox_CheckedChanged);
             // 
-            // label2
+            // secondLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(732, 491);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "seconds";
+            this.secondLabel.AutoSize = true;
+            this.secondLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.secondLabel.ForeColor = System.Drawing.Color.Snow;
+            this.secondLabel.Location = new System.Drawing.Point(732, 491);
+            this.secondLabel.Name = "secondLabel";
+            this.secondLabel.Size = new System.Drawing.Size(56, 17);
+            this.secondLabel.TabIndex = 9;
+            this.secondLabel.Text = "seconds";
             // 
             // sendAgainButton
             // 
@@ -174,7 +174,7 @@ namespace VRText
             this.sendAgainButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.sendAgainButton.FlatAppearance.BorderSize = 2;
             this.sendAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendAgainButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAgainButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendAgainButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.sendAgainButton.Location = new System.Drawing.Point(787, 256);
             this.sendAgainButton.Name = "sendAgainButton";
@@ -279,7 +279,7 @@ namespace VRText
             this.aboutButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.aboutButton.FlatAppearance.BorderSize = 2;
             this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutButton.ForeColor = System.Drawing.Color.White;
             this.aboutButton.Image = global::VRText.Properties.Resources.info;
             this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -339,7 +339,7 @@ namespace VRText
             this.removeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.removeButton.FlatAppearance.BorderSize = 2;
             this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
+            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.removeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.removeButton.Image = global::VRText.Properties.Resources.bin;
             this.removeButton.ImageAlign = System.Drawing.ContentAlignment.TopRight;
@@ -358,7 +358,7 @@ namespace VRText
             this.sendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.sendButton.FlatAppearance.BorderSize = 2;
             this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendButton.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendButton.Font = new System.Drawing.Font("Segoe UI Emoji", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.sendButton.Image = global::VRText.Properties.Resources.send;
             this.sendButton.Location = new System.Drawing.Point(627, 413);
@@ -435,10 +435,10 @@ namespace VRText
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.sendAgainButton);
             this.Controls.Add(this.removeButton);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.secondLabel);
             this.Controls.Add(this.rotateCheckBox);
             this.Controls.Add(this.TypingLabel);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chatBoxLabel);
             this.Controls.Add(this.spotifyCheckBox);
             this.Controls.Add(this.MessageList);
             this.Controls.Add(this.sendButton);
@@ -461,11 +461,11 @@ namespace VRText
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.ListView MessageList;
         private System.Windows.Forms.CheckBox spotifyCheckBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label chatBoxLabel;
         private System.Windows.Forms.Label TypingLabel;
         private System.Windows.Forms.NumericUpDown rotatingTime;
         private System.Windows.Forms.CheckBox rotateCheckBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label secondLabel;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button sendAgainButton;
         private System.Windows.Forms.Button AddButton;

@@ -54,13 +54,21 @@ namespace VRText.src.VRText.UI
                 case "Italiano":
                     variant = "it-IT";
                     break;
+                case "Français":
+                    variant = "fr-FR";
+                    break;
+                case "Norsk":
+                    variant = "no-NO";
+                    break;
                 default:
-                    variant = "pt-BR";
+                    MessageBox.Show("Invalid language or incomplete\nreverting to default");
+                    variant = "en-US";
                     break;
             }
 
             this.mainForm.lang = new Lang(variant).GetCurrentLanguage();
-            this.mainForm.setComponentLanguage();
+            this.mainForm.SetComponentLanguage(mainForm);
+            this.mainForm.SetComponentLanguage(this);
             this.mainForm.language = variant;
         }
 

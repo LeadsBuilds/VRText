@@ -25,8 +25,9 @@ namespace VRText.src.VRText.UI
             this.wmp = initializeMediaPlayer();
             this.wmp.controls.play();
 
-            pictureBox2.Controls.Add(label1);
-            pictureBox2.Controls.Add(label2);
+            pictureBox2.Controls.Add(developerLabel);
+            pictureBox2.Controls.Add(inspirationLabel);
+            pictureBox2.Controls.Add(nameLabel);
             pictureBox2.Controls.Add(pictureBox1);
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.BackColor = System.Drawing.Color.Transparent;

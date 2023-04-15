@@ -37,7 +37,7 @@ namespace VRText
             this.lang = new Lang(this.language).GetCurrentLanguage();
 
             InitializeComponent();
-            setComponentLanguage();
+            SetComponentLanguage(this);
             initListView(MessageList);
             initParams();
         }
@@ -172,18 +172,6 @@ namespace VRText
             textInput.Select();
             textInput.Text = selectedMessage;
             textInput.Select(textInput.Text.Length, 0);
-            
-            // this was kind of annoying sending again would just send it automatically,
-            // for my purpose I like having the ability to edit the message before sending again in case of spelling mistakes
-            
-            
-            // MessageHandler.sendMessage(this.selectedMessage);
-            // Interval delay = new Interval();
-            // textInput.Enabled = false;
-            // sendButton.Enabled = false;
-            // sendAgainButton.Enabled = false;
-            // cooldownLabel.Visible = true;
-            // delay.setTimeout(() => this.coolDown(), 1000);
         }
 
         private void removeButton_Click(object sender, EventArgs e)
@@ -228,21 +216,23 @@ namespace VRText
 
         // FORM LANGUAGE CONFIG
 
-        public void setComponentLanguage()
+        public void SetComponentLanguage(Control parentControl)
         {
-
-            foreach (Control ctrl in this.Controls)
+            foreach (Control ctrl in parentControl.Controls)
             {
-                if (ctrl.Name == "logoLabel" || ctrl.Name == "GitHub")
+                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput" };
+                
+                // Check if control should be excluded from translation
+                if (excludedControls.Contains(ctrl.Name))
                 {
                     continue;
                 }
-
-                if (ctrl.Text != null)
+                if (ctrl is Form)
                 {
-                    KeyValuePair<string, string> obj = this.lang.SingleOrDefault(x => x.Key == ctrl.Name);
-                    ctrl.Text = obj.Value;
+                    SetComponentLanguage(ctrl); // recursively call the function for nested forms
                 }
+                var obj = this.lang.SingleOrDefault(x => x.Key == ctrl.Name);
+                ctrl.Text = obj.Value;
             }
 
             initParams();
