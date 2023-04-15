@@ -60,17 +60,17 @@ namespace VRText
 
             MessageHandler.sendMessage(text);
             MessageHandler.saveLog(MessageList, text);
-            Interval delay = new Interval();
+            var messagedelay = new Interval();
             textInput.Enabled = false;
             sendButton.Enabled = false;
             sendAgainButton.Enabled = false;
             cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 1000);
+            messagedelay.setTimeout(() => this.TypingCoolDown(), 1000);
             textInput.Clear();
 
         }
 
-        private void coolDown()
+        private void TypingCoolDown()
         {
             MessageHandler.invokeCtrl(textInput, () =>
             {
@@ -80,7 +80,6 @@ namespace VRText
                 sendAgainButton.Enabled = true;
                 textInput.Select();
             });
-
         }
 
         private void textInput_KeyUp(object sender, KeyEventArgs e)

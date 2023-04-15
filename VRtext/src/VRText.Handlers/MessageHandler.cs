@@ -42,6 +42,15 @@ namespace VRText.Handlers
             sendMessage.Send(inputMessage);
             
         }
+        
+        // implement this, currently cant do that until placeholder text code is more firmly understood
+        public static void SendTypingIndicator(bool state)
+        {
+            var inputMessage = new OscMessage(OSC.getTypingEndPoint(), state);
+            var sendMessage = new UDPSender(OSC.getAddress(), OSC.getAddressPort());
+            sendMessage.Send(inputMessage);
+            
+        }
 
         private static void sendTypingStatus()
         {

@@ -27,13 +27,9 @@ namespace VRText.Spotify
                 return;
             }
 
-            if (GetSpotifyTrackInfo() != currentSong)
-            {
-                MessageHandler.sendMessage(prefix + " " + GetSpotifyTrackInfo());
-                currentSong = GetSpotifyTrackInfo();
-
-            }
-                return;
+            if (GetSpotifyTrackInfo() == currentSong) return;
+            MessageHandler.sendMessage(prefix + " " + GetSpotifyTrackInfo());
+            currentSong = GetSpotifyTrackInfo();
         }
 
         public static string getCurrentSong()
