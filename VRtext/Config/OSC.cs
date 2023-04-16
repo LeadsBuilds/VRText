@@ -27,7 +27,7 @@ namespace VRText.Config
 
         public static int getAddressPort()
         {
-            if (Int32.TryParse(settings[1], out int addressPort))
+            if (Int32.TryParse(settings[1], out var addressPort))
             {
                 return addressPort;
             }

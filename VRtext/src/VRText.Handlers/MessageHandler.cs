@@ -11,9 +11,6 @@ namespace VRText.Handlers
         delegate void MultiThreadCallBack();
 
         private static int increment = 0;
-
-        private static Interval cooldown = new Interval();
-
         public static void invokeCtrl(Control control, Action function)
         {
             if (control.IsDisposed || control.Disposing)
@@ -29,8 +26,6 @@ namespace VRText.Handlers
 
         public static void saveLog(ListView listView, string message)
         {
-            
-
             var item = new ListViewItem(new[] { message, DateTime.Now.ToString("HH:mm:ss") });
             listView.Items.Add(item);
         }
@@ -40,7 +35,6 @@ namespace VRText.Handlers
             var inputMessage = new OscMessage(OSC.getChatEndpoint(), message, true);
             var sendMessage = new UDPSender(OSC.getAddress(), OSC.getAddressPort());
             sendMessage.Send(inputMessage);
-            
         }
         
         // implement this, currently cant do that until placeholder text code is more firmly understood
@@ -59,9 +53,9 @@ namespace VRText.Handlers
 
         public static int getMessageLength(TextBox text)
         {
-            int maxLength = 144;
-            int currentLength = text.Text.Length;
-            int remainder = 144;
+            var maxLength = 144;
+            var currentLength = text.Text.Length;
+            var remainder = 144;
 
             if (currentLength >= 0)
             {
@@ -87,7 +81,7 @@ namespace VRText.Handlers
 
             foreach (ListViewItem item in listView.SelectedItems)
             {
-                int previousIndex = 0;
+                var previousIndex = 0;
 
                 if (item.Index > 0)
                 {
@@ -107,7 +101,7 @@ namespace VRText.Handlers
 
         private static ListView getListViewItems(ListView lstview)
         {
-            ListView temp = new ListView();
+            var temp = new ListView();
             if (!lstview.InvokeRequired)
             {
                 foreach (ListViewItem item in lstview.Items)
@@ -117,18 +111,18 @@ namespace VRText.Handlers
             else
                 return (ListView)lstview.Invoke(new GetItems(getListViewItems), new object[] { lstview });
         }
-        public static void rotate(ListView listView)
+        public static void Rotate(ListView listView)
         {
-            ListView rotatingListView = getListViewItems(listView);
+            var rotatingListView = getListViewItems(listView);
             rotatingListView.Sorting = SortOrder.Ascending;
-            int totalItems = rotatingListView.Items.Count - 1;
+            var totalItems = rotatingListView.Items.Count - 1;
 
             if (totalItems == -1) 
             {
                 return;
             }
 
-            string text = rotatingListView.Items[increment].Text;
+            var text = rotatingListView.Items[increment].Text;
 
             if (increment == totalItems)
             {

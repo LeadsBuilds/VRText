@@ -37,7 +37,7 @@ namespace VRText.src.VRText.UI
 
         private void languageOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string lang = languageOptions.Text;
+            var lang = languageOptions.Text;
             string variant;
 
             switch(lang)
@@ -74,7 +74,7 @@ namespace VRText.src.VRText.UI
 
         private void configControls()
         {
-            string currentLanguage = this.mainForm.language;
+            var currentLanguage = this.mainForm.language;
             Console.WriteLine(currentLanguage);
 
             switch (currentLanguage)
@@ -107,8 +107,8 @@ namespace VRText.src.VRText.UI
 
         private void testConnectionButton_Click(object sender, EventArgs e)
         {
-            string address = serverAddressInput.Text;
-            int port = int.Parse(portInput.Text);
+            var address = serverAddressInput.Text;
+            var port = int.Parse(portInput.Text);
             var delay = new Interval();
             var inputMessage = new OscMessage(OSC.getTypingEndPoint(), true);
             var sendMessage = new UDPSender(address, port);

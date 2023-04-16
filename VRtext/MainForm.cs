@@ -24,9 +24,6 @@ namespace VRText
         public MainForm()
         {
             CosturaUtility.Initialize();
-            CultureInfo ci = CultureInfo.InstalledUICulture;
-            ci = CultureInfo.CurrentUICulture;
-            this.language = "DE";//ci.ToString();
 
             if (this.language != "pt-BR" && this.language != "en-US")
             {
@@ -44,7 +41,7 @@ namespace VRText
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            string text = textInput.Text;
+            var text = textInput.Text;
 
             if (text == "\r\n" || text.Length <= 0)
             {
@@ -124,7 +121,7 @@ namespace VRText
                 this.interval.Stop(this.intervalTimer);
             }
 
-            this.intervalTimer = this.interval.Set(() => MessageHandler.rotate(MessageList), (int)rotatingTime.Value * 1000);
+            this.intervalTimer = this.interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
         }
         private void spotifyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -143,7 +140,7 @@ namespace VRText
                 this.interval.Stop(this.intervalTimer);
             }
 
-            Interval spotifyLabelInterval = new Interval();
+            var spotifyLabelInterval = new Interval();
 
             this.intervalTimer = this.interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
         }
@@ -162,7 +159,7 @@ namespace VRText
 
         private void MessageList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            string currentItem = e.Item.Text;
+            var currentItem = e.Item.Text;
             this.selectedMessage = currentItem;
         }
 
@@ -180,7 +177,7 @@ namespace VRText
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            string text = textInput.Text;
+            var text = textInput.Text;
 
             if (text == "\r\n" || text.Length <= 0)
             {
@@ -199,9 +196,9 @@ namespace VRText
 
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            SolidBrush backColor = new SolidBrush(Color.FromArgb(16, 40, 47));
-            SolidBrush selectedColor = new SolidBrush(Color.FromArgb(66, 113, 115));
-            SolidBrush foreColor = new SolidBrush(Color.White);
+            var backColor = new SolidBrush(Color.FromArgb(16, 40, 47));
+            var selectedColor = new SolidBrush(Color.FromArgb(66, 113, 115));
+            var foreColor = new SolidBrush(Color.White);
 
             if (e.Item.Selected)
             {
@@ -293,7 +290,7 @@ namespace VRText
             {
                 if (selectedItem.Index > 0)
                 {
-                    int index = selectedItem.Index - 1;
+                    var index = selectedItem.Index - 1;
                     MessageList.Items.RemoveAt(selectedItem.Index);
                     MessageList.Items.Insert(index, selectedItem);
                 }
@@ -311,7 +308,7 @@ namespace VRText
             {
                 if (selectedItem.Index >= 0 && selectedItem.Index < MessageList.Items.Count - 1)
                 {
-                    int index = selectedItem.Index + 1;
+                    var index = selectedItem.Index + 1;
                     MessageList.Items.RemoveAt(selectedItem.Index);
                     MessageList.Items.Insert(index, selectedItem);
                 }
