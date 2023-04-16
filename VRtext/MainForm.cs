@@ -67,7 +67,7 @@ namespace VRText
             cooldownLabel.Visible = true;
             messagedelay.setTimeout(() => this.TypingCoolDown(), 1000);
             textInput.Clear();
-
+            MessageList.Items[MessageList.Items.Count - 1].EnsureVisible();
         }
 
         private void TypingCoolDown()
