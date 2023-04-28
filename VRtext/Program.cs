@@ -18,7 +18,9 @@ namespace VRText
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if  DEBUG
             // AllocConsole();
+#endif
             Application.Run(new MainForm());
         }
     }
