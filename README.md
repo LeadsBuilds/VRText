@@ -37,6 +37,11 @@ If you wish for VRText to start automatically with your SteamVR it can be done a
 2. Place this downloaded file into the same directory were you have places VRtext.exe
 3. Start SteamVR and then double click the manifest to add it to your SteamVR install
 4. Go to SteamVR > Settings > Startup / Shutdown. Toggle VRText to on if it isn't already
-![VRText SteamVR Autostart](GitContent/Vrtextautostart.mp4 "Autostart")
+
+Tutorial below
+![VRText SteamVR Autostart](GitContent/Vrtextautostart.gif "AutoStart")
+
+# Removal of AutoStart
+Toggle the button off in Steamvr Startup / Shutdown or Remove the manifest file or relocate it and SteamVR will auto remove it
 
 ## If you want to collaborate with the project or even create a brand new idea by using its core feel free to do so.
