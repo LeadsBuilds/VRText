@@ -32,6 +32,7 @@ namespace VRText.src.VRText.UI
             this.developerLabel = new System.Windows.Forms.Label();
             this.inspirationLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.additionsLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,6 +80,19 @@ namespace VRText.src.VRText.UI
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "AKA Wendell";
             // 
+            // additionsLabel
+            // 
+            this.additionsLabel.AutoSize = true;
+            this.additionsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.additionsLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
+            this.additionsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.additionsLabel.Location = new System.Drawing.Point(249, 43);
+            this.additionsLabel.Name = "additionsLabel";
+            this.additionsLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.additionsLabel.Size = new System.Drawing.Size(117, 19);
+            this.additionsLabel.TabIndex = 4;
+            this.additionsLabel.Text = "Additions by Myrkur";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::VRText.Properties.Resources.shoot;
@@ -105,6 +119,7 @@ namespace VRText.src.VRText.UI
             this.ClientSize = new System.Drawing.Size(364, 247);
             this.ControlBox = false;
             this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.additionsLabel);
             this.Controls.Add(this.inspirationLabel);
             this.Controls.Add(this.developerLabel);
             this.Controls.Add(this.pictureBox1);
@@ -135,5 +150,6 @@ namespace VRText.src.VRText.UI
         private System.Windows.Forms.Label developerLabel;
         private System.Windows.Forms.Label inspirationLabel;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label additionsLabel;
     }
 }
