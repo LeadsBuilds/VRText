@@ -65,8 +65,12 @@ namespace VRText.src.VRText.UI
                     variant = "en-US";
                     break;
             }
-
-            this.mainForm.lang = new Lang(variant).GetCurrentLanguage();
+            
+            var language = new Lang(variant).GetCurrentLanguage();
+            if (language != null)
+            {
+                this.mainForm.lang = language;
+            }
             this.mainForm.SetComponentLanguage(mainForm);
             this.mainForm.SetComponentLanguage(this);
             this.mainForm.language = variant;

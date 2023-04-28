@@ -29,9 +29,16 @@ namespace VRText
             {
                 this.language = "en-US";
             }
-
+#if DEBUG
             Console.WriteLine("Loaded default language: " + this.language);
-            this.lang = new Lang(this.language).GetCurrentLanguage();
+#endif
+            
+            var currentLanguage = new Lang(this.language).GetCurrentLanguage();
+            if (currentLanguage != null)
+            {
+                this.lang = currentLanguage;
+            }
+            
 
             InitializeComponent();
             SetComponentLanguage(this);

@@ -272,6 +272,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\VRText.Handlers\ErrorHandler.cs" />
     <Compile Include="src\VRText.Handlers\MessageHandler.cs" />
     <Compile Include="src\VRText.Spotify\SpotifyHandler.cs" />
     <Compile Include="src\VRText.UI\Component.PlaceholderTextBox.cs">
