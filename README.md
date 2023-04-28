@@ -39,7 +39,8 @@ If you wish for VRText to start automatically with your SteamVR it can be done a
 4. Go to SteamVR > Settings > Startup / Shutdown. Toggle VRText to on if it isn't already
 
 Tutorial below
-![VRText SteamVR Autostart](GitContent/Vrtextautostart.gif "AutoStart")
+
+https://user-images.githubusercontent.com/20288698/235174755-38c8c2a1-a537-4ce5-9c09-4cd0dcfeed0a.mp4
 
 # Removal of AutoStart
 Toggle the button off in Steamvr Startup / Shutdown or Remove the manifest file or relocate it and SteamVR will auto remove it
