@@ -33,6 +33,10 @@ Now you can start sharing what you want to say or your music, be creative! :)
 # SteamVR Autostart
 
 If you wish for VRText to start automatically with your SteamVR it can be done as such here following the tutorial below
+1. First download the SteamVrManifest located here [SteamVRManifest](VRtext/manifest.vrmanifest "SteamVRManifest")
+2. Place this downloaded file into the same directory were you have places VRtext.exe
+3. Start SteamVR and then double click the manifest to add it to your SteamVR install
+4. Go to SteamVR > Settings > Startup / Shutdown. Toggle VRText to on if it isn't already
 
 
 ## If you want to collaborate with the project or even create a brand new idea by using its core feel free to do so.
