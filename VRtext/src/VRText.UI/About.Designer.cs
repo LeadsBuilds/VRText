@@ -29,55 +29,69 @@ namespace VRText.src.VRText.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.developerLabel = new System.Windows.Forms.Label();
+            this.inspirationLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.additionsLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // developerLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 12F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(84, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Developed by Downluck ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.developerLabel.AutoSize = true;
+            this.developerLabel.BackColor = System.Drawing.Color.Transparent;
+            this.developerLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.developerLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.developerLabel.Location = new System.Drawing.Point(84, 1);
+            this.developerLabel.Name = "developerLabel";
+            this.developerLabel.Size = new System.Drawing.Size(197, 21);
+            this.developerLabel.TabIndex = 2;
+            this.developerLabel.Text = "Developed by Downluck ";
+            this.developerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.developerLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // inspirationLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 10F);
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(38, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(300, 95);
-            this.label2.TabIndex = 3;
-            this.label2.Text = " We were born to try\r\nTo see each other through\r\nTo know and love ourselves and o" +
+            this.inspirationLabel.AutoSize = true;
+            this.inspirationLabel.BackColor = System.Drawing.Color.Transparent;
+            this.inspirationLabel.Font = new System.Drawing.Font("Malgun Gothic", 10F);
+            this.inspirationLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.inspirationLabel.Location = new System.Drawing.Point(38, 152);
+            this.inspirationLabel.Name = "inspirationLabel";
+            this.inspirationLabel.Size = new System.Drawing.Size(300, 95);
+            this.inspirationLabel.TabIndex = 3;
+            this.inspirationLabel.Text = " We were born to try\r\nTo see each other through\r\nTo know and love ourselves and o" +
     "thers as well\r\nIs the most difficult and meaningful work\r\nWe\'ll ever do";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.inspirationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // nameLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 8F);
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(237, 24);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(3);
-            this.label3.Size = new System.Drawing.Size(78, 19);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "AKA Wendell";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.nameLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
+            this.nameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nameLabel.Location = new System.Drawing.Point(237, 24);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.nameLabel.Size = new System.Drawing.Size(78, 19);
+            this.nameLabel.TabIndex = 4;
+            this.nameLabel.Text = "AKA Wendell";
+            // 
+            // additionsLabel
+            // 
+            this.additionsLabel.AutoSize = true;
+            this.additionsLabel.BackColor = System.Drawing.Color.Transparent;
+            this.additionsLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
+            this.additionsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.additionsLabel.Location = new System.Drawing.Point(249, 43);
+            this.additionsLabel.Name = "additionsLabel";
+            this.additionsLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.additionsLabel.Size = new System.Drawing.Size(117, 19);
+            this.additionsLabel.TabIndex = 4;
+            this.additionsLabel.Text = "Additions by Myrkur";
             // 
             // pictureBox1
             // 
@@ -104,9 +118,10 @@ namespace VRText.src.VRText.UI
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(364, 247);
             this.ControlBox = false;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.additionsLabel);
+            this.Controls.Add(this.inspirationLabel);
+            this.Controls.Add(this.developerLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -132,8 +147,9 @@ namespace VRText.src.VRText.UI
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label developerLabel;
+        private System.Windows.Forms.Label inspirationLabel;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label additionsLabel;
     }
 }

@@ -37,7 +37,7 @@ namespace VRText.src.VRText.UI
 
         private void languageOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string lang = languageOptions.Text;
+            var lang = languageOptions.Text;
             string variant;
 
             switch(lang)
@@ -48,41 +48,71 @@ namespace VRText.src.VRText.UI
                 case "Português do Brasil":
                     variant = "pt-BR";
                     break;
+                case "Deutsch":
+                    variant = "de-DE";
+                    break;
+                case "Italiano":
+                    variant = "it-IT";
+                    break;
+                case "Français":
+                    variant = "fr-FR";
+                    break;
+                case "Norsk":
+                    variant = "no-NO";
+                    break;
                 default:
-                    variant = "pt-BR";
+                    MessageBox.Show("Invalid language or incomplete\nreverting to default");
+                    variant = "en-US";
                     break;
             }
-
-            this.mainForm.lang = new Lang(variant).getCurrentLanguage();
-            this.mainForm.setComponentLanguage();
+            
+            var language = new Lang(variant).GetCurrentLanguage();
+            if (language != null)
+            {
+                this.mainForm.lang = language;
+            }
+            this.mainForm.SetComponentLanguage(mainForm);
+            this.mainForm.SetComponentLanguage(this);
             this.mainForm.language = variant;
         }
 
         private void configControls()
         {
-            string currentLanguage = this.mainForm.language;
+            var currentLanguage = this.mainForm.language;
             Console.WriteLine(currentLanguage);
 
-            if (currentLanguage == "en-US")
+            switch (currentLanguage)
             {
-                languageOptions.SelectedItem = "English";
+                case "en-US":
+                    languageOptions.SelectedItem = "English";
 
-                return;
+                    return;
+                case "pt-BR":
+                    languageOptions.SelectedItem = "Português do Brasil";
+
+                    return;
+                case "de-DE":
+                    languageOptions.SelectedItem = "Deutsch";
+
+                    return;
+                case "fr-FR":
+                    languageOptions.SelectedItem = "Français";
+
+                    return;
+                case "no-NO":
+                    languageOptions.SelectedItem = "Norsk";
+
+                    return;
+                case "it-IT":
+                    languageOptions.SelectedItem = "Italiano";
+                    break;
             }
-
-            if (currentLanguage == "pt-BR")
-            {
-                languageOptions.SelectedItem = "Português do Brasil";
-
-                return;
-            }
-
         }
 
         private void testConnectionButton_Click(object sender, EventArgs e)
         {
-            string address = serverAddressInput.Text;
-            int port = int.Parse(portInput.Text);
+            var address = serverAddressInput.Text;
+            var port = int.Parse(portInput.Text);
             var delay = new Interval();
             var inputMessage = new OscMessage(OSC.getTypingEndPoint(), true);
             var sendMessage = new UDPSender(address, port);

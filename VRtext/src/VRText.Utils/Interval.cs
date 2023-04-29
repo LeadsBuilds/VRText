@@ -34,7 +34,7 @@ namespace VRText.Utils
 
         public void setTimeout(Action TheAction, int Timeout)
         {
-            Thread t = new Thread(
+            var t = new Thread(
                 () =>
                 {
                     Thread.Sleep(Timeout);

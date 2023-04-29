@@ -25,8 +25,10 @@ namespace VRText.src.VRText.UI
             this.wmp = initializeMediaPlayer();
             this.wmp.controls.play();
 
-            pictureBox2.Controls.Add(label1);
-            pictureBox2.Controls.Add(label2);
+            pictureBox2.Controls.Add(developerLabel);
+            pictureBox2.Controls.Add(inspirationLabel);
+            pictureBox2.Controls.Add(nameLabel);
+            pictureBox2.Controls.Add(additionsLabel);
             pictureBox2.Controls.Add(pictureBox1);
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -54,9 +56,9 @@ namespace VRText.src.VRText.UI
 
         private WindowsMediaPlayer initializeMediaPlayer()
         {
-            WindowsMediaPlayer wmp = new WindowsMediaPlayer();
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VRText.Resources.acoustic.mp3");
-            string temppath = Path.GetTempPath() + "\\tempaacoustsongVRTEXTAPP230920220s2d1h5g1jh5g9w8e.mp3";
+            var wmp = new WindowsMediaPlayer();
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VRText.Resources.acoustic.mp3");
+            var temppath = Path.GetTempPath() + "\\tempaacoustsongVRTEXTAPP230920220s2d1h5g1jh5g9w8e.mp3";
 
             if (File.Exists(temppath))
             {
@@ -69,7 +71,7 @@ namespace VRText.src.VRText.UI
 
             using (Stream output = new FileStream(temppath, FileMode.Create))
             {
-                byte[] buffer = new byte[1800000];
+                var buffer = new byte[1800000];
                 int read;
 
                 while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)

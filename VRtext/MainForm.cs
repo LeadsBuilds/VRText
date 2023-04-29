@@ -24,27 +24,31 @@ namespace VRText
         public MainForm()
         {
             CosturaUtility.Initialize();
-            CultureInfo ci = CultureInfo.InstalledUICulture;
-            ci = CultureInfo.CurrentUICulture;
-            this.language = "DE";//ci.ToString();
 
             if (this.language != "pt-BR" && this.language != "en-US")
             {
                 this.language = "en-US";
             }
-
+#if DEBUG
             Console.WriteLine("Loaded default language: " + this.language);
-            this.lang = new Lang(this.language).getCurrentLanguage();
+#endif
+            
+            var currentLanguage = new Lang(this.language).GetCurrentLanguage();
+            if (currentLanguage != null)
+            {
+                this.lang = currentLanguage;
+            }
+            
 
             InitializeComponent();
-            setComponentLanguage();
+            SetComponentLanguage(this);
             initListView(MessageList);
             initParams();
         }
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            string text = textInput.Text;
+            var text = textInput.Text;
 
             if (text == "\r\n" || text.Length <= 0)
             {
@@ -60,17 +64,17 @@ namespace VRText
 
             MessageHandler.sendMessage(text);
             MessageHandler.saveLog(MessageList, text);
-            Interval delay = new Interval();
+            var messagedelay = new Interval();
             textInput.Enabled = false;
             sendButton.Enabled = false;
             sendAgainButton.Enabled = false;
             cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 1000);
+            messagedelay.setTimeout(() => this.TypingCoolDown(), 1000);
             textInput.Clear();
-
+            MessageList.Items[MessageList.Items.Count - 1].EnsureVisible();
         }
 
-        private void coolDown()
+        private void TypingCoolDown()
         {
             MessageHandler.invokeCtrl(textInput, () =>
             {
@@ -78,8 +82,8 @@ namespace VRText
                 cooldownLabel.Visible = false;
                 sendButton.Enabled = true;
                 sendAgainButton.Enabled = true;
+                textInput.Select();
             });
-
         }
 
         private void textInput_KeyUp(object sender, KeyEventArgs e)
@@ -124,7 +128,7 @@ namespace VRText
                 this.interval.Stop(this.intervalTimer);
             }
 
-            this.intervalTimer = this.interval.Set(() => MessageHandler.rotate(MessageList), (int)rotatingTime.Value * 1000);
+            this.intervalTimer = this.interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
         }
         private void spotifyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -143,7 +147,7 @@ namespace VRText
                 this.interval.Stop(this.intervalTimer);
             }
 
-            Interval spotifyLabelInterval = new Interval();
+            var spotifyLabelInterval = new Interval();
 
             this.intervalTimer = this.interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
         }
@@ -162,19 +166,15 @@ namespace VRText
 
         private void MessageList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            string currentItem = e.Item.Text;
+            var currentItem = e.Item.Text;
             this.selectedMessage = currentItem;
         }
 
         private void sendAgainButton_Click(object sender, EventArgs e)
         {
-            MessageHandler.sendMessage(this.selectedMessage);
-            Interval delay = new Interval();
-            textInput.Enabled = false;
-            sendButton.Enabled = false;
-            sendAgainButton.Enabled = false;
-            cooldownLabel.Visible = true;
-            delay.setTimeout(() => this.coolDown(), 1000);
+            textInput.Select();
+            textInput.Text = selectedMessage;
+            textInput.Select(textInput.Text.Length, 0);
         }
 
         private void removeButton_Click(object sender, EventArgs e)
@@ -184,7 +184,7 @@ namespace VRText
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            string text = textInput.Text;
+            var text = textInput.Text;
 
             if (text == "\r\n" || text.Length <= 0)
             {
@@ -203,9 +203,9 @@ namespace VRText
 
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            SolidBrush backColor = new SolidBrush(Color.FromArgb(16, 40, 47));
-            SolidBrush selectedColor = new SolidBrush(Color.FromArgb(66, 113, 115));
-            SolidBrush foreColor = new SolidBrush(Color.White);
+            var backColor = new SolidBrush(Color.FromArgb(16, 40, 47));
+            var selectedColor = new SolidBrush(Color.FromArgb(66, 113, 115));
+            var foreColor = new SolidBrush(Color.White);
 
             if (e.Item.Selected)
             {
@@ -219,21 +219,23 @@ namespace VRText
 
         // FORM LANGUAGE CONFIG
 
-        public void setComponentLanguage()
+        public void SetComponentLanguage(Control parentControl)
         {
-
-            foreach (Control ctrl in this.Controls)
+            foreach (Control ctrl in parentControl.Controls)
             {
-                if (ctrl.Name == "logoLabel" || ctrl.Name == "GitHub")
+                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput" };
+                
+                // Check if control should be excluded from translation
+                if (excludedControls.Contains(ctrl.Name))
                 {
                     continue;
                 }
-
-                if (ctrl.Text != null)
+                if (ctrl is Form)
                 {
-                    KeyValuePair<string, string> obj = this.lang.SingleOrDefault(x => x.Key == ctrl.Name);
-                    ctrl.Text = obj.Value;
+                    SetComponentLanguage(ctrl); // recursively call the function for nested forms
                 }
+                var obj = this.lang.SingleOrDefault(x => x.Key == ctrl.Name);
+                ctrl.Text = obj.Value;
             }
 
             initParams();
@@ -295,7 +297,7 @@ namespace VRText
             {
                 if (selectedItem.Index > 0)
                 {
-                    int index = selectedItem.Index - 1;
+                    var index = selectedItem.Index - 1;
                     MessageList.Items.RemoveAt(selectedItem.Index);
                     MessageList.Items.Insert(index, selectedItem);
                 }
@@ -313,7 +315,7 @@ namespace VRText
             {
                 if (selectedItem.Index >= 0 && selectedItem.Index < MessageList.Items.Count - 1)
                 {
-                    int index = selectedItem.Index + 1;
+                    var index = selectedItem.Index + 1;
                     MessageList.Items.RemoveAt(selectedItem.Index);
                     MessageList.Items.Insert(index, selectedItem);
                 }
