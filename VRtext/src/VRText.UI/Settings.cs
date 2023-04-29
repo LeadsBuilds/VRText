@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Windows.Forms;
-using SharpOSC;
+using VRText.SharpOSC;
 using VRText.Config;
 using VRText.Utils;
 using VRText.Spotify;
 using System.Threading;
 using System.Net.Sockets;
+using OscMessage = VRText.SharpOSC.OscMessage;
+using UDPSender = VRText.SharpOSC.UDPSender;
 
 namespace VRText.src.VRText.UI
 {
@@ -47,6 +49,9 @@ namespace VRText.src.VRText.UI
                     break;
                 case "Português do Brasil":
                     variant = "pt-BR";
+                    break;
+                case "Español":
+                    variant = "es-419";
                     break;
                 case "Deutsch":
                     variant = "de-DE";
@@ -90,6 +95,9 @@ namespace VRText.src.VRText.UI
                 case "pt-BR":
                     languageOptions.SelectedItem = "Português do Brasil";
 
+                    return;
+                case "es-419":
+                    languageOptions.SelectedItem = "Español";
                     return;
                 case "de-DE":
                     languageOptions.SelectedItem = "Deutsch";
