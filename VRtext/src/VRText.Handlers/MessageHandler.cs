@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using VRText.Config;
-using SharpOSC;
-using VRText.Utils;
+using VRText.SharpOSC;
+using OscMessage = VRText.SharpOSC.OscMessage;
+using UDPSender = VRText.SharpOSC.UDPSender;
 
 namespace VRText.Handlers
 {
     public static class MessageHandler
     {
+        static ErrorHandler _errorHandlerMessage = new ErrorHandler();
         delegate void MultiThreadCallBack();
 
         private static int increment = 0;

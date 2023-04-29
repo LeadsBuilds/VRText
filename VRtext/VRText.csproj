@@ -61,20 +61,11 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D91B7036A84558E6FEA8D53644E9C067CDEB27FB</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>VRText_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -102,10 +93,6 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="SharpOSC">
-      <HintPath>src\SharpOSC.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SpotifyAPI.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SpotifyAPI.Web.6.2.2\lib\netstandard2.0\SpotifyAPI.Web.dll</HintPath>
     </Reference>
@@ -272,6 +259,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\SharpOSC\Extensions.cs" />
+    <Compile Include="src\SharpOSC\Midi.cs" />
+    <Compile Include="src\SharpOSC\OscBundle.cs" />
+    <Compile Include="src\SharpOSC\OscMessage.cs" />
+    <Compile Include="src\SharpOSC\OscPacket.cs" />
+    <Compile Include="src\SharpOSC\RGBA.cs" />
+    <Compile Include="src\SharpOSC\Symbol.cs" />
+    <Compile Include="src\SharpOSC\Timetag.cs" />
+    <Compile Include="src\SharpOSC\UDPListener.cs" />
+    <Compile Include="src\SharpOSC\UDPSender.cs" />
+    <Compile Include="src\SharpOSC\Utils.cs" />
     <Compile Include="src\VRText.Handlers\ErrorHandler.cs" />
     <Compile Include="src\VRText.Handlers\MessageHandler.cs" />
     <Compile Include="src\VRText.Spotify\SpotifyHandler.cs" />
@@ -298,6 +296,7 @@
     </Compile>
     <Compile Include="src\VRText.Utils\Interval.cs" />
     <EmbeddedResource Include="Localization\en-US.txt" />
+    <EmbeddedResource Include="Localization\es-419.txt" />
     <EmbeddedResource Include="Localization\pt-BR.txt" />
     <EmbeddedResource Include="Localization\it-IT.txt" />
     <EmbeddedResource Include="Localization\de-DE.txt" />

@@ -49,7 +49,7 @@ namespace VRText.src.VRText.UI
             this.developerLabel.Name = "developerLabel";
             this.developerLabel.Size = new System.Drawing.Size(197, 21);
             this.developerLabel.TabIndex = 2;
-            this.developerLabel.Text = "Developed by Downluck ";
+            this.developerLabel.Text = "Developed by LeadsBuilds ";
             this.developerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.developerLabel.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -78,7 +78,7 @@ namespace VRText.src.VRText.UI
             this.nameLabel.Padding = new System.Windows.Forms.Padding(3);
             this.nameLabel.Size = new System.Drawing.Size(78, 19);
             this.nameLabel.TabIndex = 4;
-            this.nameLabel.Text = "AKA Wendell";
+            this.nameLabel.Text = "AKA Downluck";
             // 
             // additionsLabel
             // 
