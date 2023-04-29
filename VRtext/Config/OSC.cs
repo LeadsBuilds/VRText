@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VRText.Handlers;
 
 namespace VRText.Config
 {
@@ -49,6 +50,8 @@ namespace VRText.Config
         {
             settings[0] = address;
             settings[1] = port;
+
+            SQLiteHandler.UpdateOSCSettings(address, port);
         }
     }
 }

@@ -8,7 +8,6 @@ using VRText.Handlers;
 using VRText.Spotify;
 using VRText.Config;
 using VRText.src.VRText.UI;
-using System.Globalization;
 
 namespace VRText
 {
@@ -39,11 +38,11 @@ namespace VRText
                 this.lang = currentLanguage;
             }
             
-
             InitializeComponent();
+            InitParams();
+            InitDataBase();
             SetComponentLanguage(this);
-            initListView(MessageList);
-            initParams();
+            InitListView(MessageList);
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -97,15 +96,23 @@ namespace VRText
             }
         }
 
-        private void initListView(ListView listView)
+        private void InitListView(ListView listView)
         {
             listView.OwnerDraw = true;
             listView.Columns.Add("Message", -2, HorizontalAlignment.Left);
             listView.Columns.Add("Sent At", -2, HorizontalAlignment.Left);
     
             listView.BorderStyle = BorderStyle.FixedSingle;
+
+            var messages = SQLiteHandler.GetAllMessages();
             
-            this.ResizeListViewColumns(listView);
+            foreach (var message in messages)
+            {
+                var item = new ListViewItem(new[] { message[0], message[1] });
+                listView.Items.Add(item);
+            }
+            
+            ResizeListViewColumns(listView);
         }
 
         private void ResizeListViewColumns(ListView listView)
@@ -195,10 +202,25 @@ namespace VRText
             MessageHandler.addToList(MessageList, textInput.Text);
         }
 
-        private void initParams()
+        private void InitParams()
         {
             textInput.PlaceHolderText = this.lang.SingleOrDefault(x => x.Key == "placeHolder").Value;
             cooldownLabel.Text = this.lang.SingleOrDefault(x => x.Key == "cooldown").Value;
+
+            AppDomain.CurrentDomain.SetData("DataDirectory",
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+        }
+
+        private void InitDataBase()
+        {
+            SQLiteHandler.init();
+            var loadedLang = SQLiteHandler.GetLanguage();
+
+            if (loadedLang != this.language && loadedLang != "")
+            {
+                this.lang = new Lang(loadedLang).GetCurrentLanguage();
+                this.language = loadedLang;
+            }
         }
 
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
@@ -238,7 +260,7 @@ namespace VRText
                 ctrl.Text = obj.Value;
             }
 
-            initParams();
+            InitParams();
         }
 
         ///
@@ -330,6 +352,8 @@ namespace VRText
             {
                 MessageList.Items.Remove(item);
             }
+
+            SQLiteHandler.DeleteAllMessages();
         }
     }
 

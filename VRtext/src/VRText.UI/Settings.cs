@@ -14,6 +14,7 @@ using VRText.Utils;
 using VRText.Spotify;
 using System.Threading;
 using System.Net.Sockets;
+using VRText.Handlers;
 using OscMessage = VRText.SharpOSC.OscMessage;
 using UDPSender = VRText.SharpOSC.UDPSender;
 
@@ -32,9 +33,44 @@ namespace VRText.src.VRText.UI
 
         private void InitializeSettings()
         {
-            this.SpotifyPrefixInput.Text = SpotifyHandler.getPrefix();
-            serverAddressInput.Text = OSC.getAddress();
-            portInput.Text = OSC.getAddressPort().ToString();
+            var loadSettings = SQLiteHandler.LoadSettings();
+            string serverAddress;
+            string serverPort;
+            string spotifyPrefix;
+            string lang;
+            
+            serverAddress = OSC.getAddress();
+            serverPort = OSC.getAddressPort().ToString();
+            spotifyPrefix = SpotifyHandler.getPrefix();
+            lang = mainForm.language;
+
+            if (loadSettings.Any())
+            {
+                var settingsValues = loadSettings[0];
+                
+                serverAddress = settingsValues[0];
+                serverPort = settingsValues[1];
+                spotifyPrefix = settingsValues[2];
+                lang = settingsValues[3];
+                
+                var language = new Lang(lang).GetCurrentLanguage();
+                if (language != null)
+                {
+                    this.mainForm.lang = language;
+                }
+                
+                this.mainForm.SetComponentLanguage(mainForm);
+                this.mainForm.SetComponentLanguage(this);
+            }
+
+            serverAddressInput.Text = serverAddress;
+            portInput.Text = serverPort;
+            SpotifyPrefixInput.Text = spotifyPrefix;
+
+            string[] data = { serverAddress, serverPort, spotifyPrefix, lang };
+            
+            if (!loadSettings.Any()) SQLiteHandler.InitSettings(data);
+
         }
 
         private void languageOptions_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +115,7 @@ namespace VRText.src.VRText.UI
             this.mainForm.SetComponentLanguage(mainForm);
             this.mainForm.SetComponentLanguage(this);
             this.mainForm.language = variant;
+            SQLiteHandler.UpdateLanguageSettings(variant);
         }
 
         private void configControls()
@@ -138,15 +175,21 @@ namespace VRText.src.VRText.UI
 
         private void ResetSettings_Click(object sender, EventArgs e)
         {
-            OSC.setNewAddress("127.0.0.1", "9000");
-            serverAddressInput.Text = "127.0.0.1";
-            portInput.Text = "9000";
+            var serverAddress = "127.0.0.1";
+            var serverPort = "9000";
+
+            OSC.setNewAddress(serverAddress, serverPort);
+            serverAddressInput.Text = serverAddress;
+            portInput.Text = serverPort;
             testLabel.Text = "Default settings have been set.";
+
         }
 
         private void SpotifyPrefixInput_KeyUp(object sender, KeyEventArgs e)
         {
-            SpotifyHandler.setPrefix(SpotifyPrefixInput.Text);
+            string prefix = SpotifyPrefixInput.Text;
+            SpotifyHandler.setPrefix(prefix);
+            SQLiteHandler.UpdateSpotifyPrefix(prefix);
         }
 
         private void GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
