@@ -102,7 +102,7 @@ namespace VRText.Handlers
          while (reader.Read())
          {
             string[] row = { reader.GetString(0), reader.GetInt16(1).ToString(), reader.GetString(2), 
-               reader.GetString(3), reader.GetBoolean(4).ToString(), reader.GetBoolean(5).ToString(), reader.GetInt16(6).ToString() };
+               reader.GetString(3), reader.GetInt16(4).ToString(), reader.GetInt16(5).ToString(), reader.GetInt16(6).ToString() };
             rows.Add(row);
          }
 
@@ -230,7 +230,7 @@ namespace VRText.Handlers
       
       static void CreateSettingsTable(SQLiteConnection conn)
       {
-         string sql = "CREATE TABLE IF NOT EXISTS settings (ServerAddress VARCHAR(144), ServerPort INT(5), SpotifyPREFIX VARCHAR(100), Lang VARCHAR(10), SpotifyStatus BOOLEAN, RotatingList BOOLEAN, RotatingTime INT(3));";
+         string sql = "CREATE TABLE IF NOT EXISTS settings (ServerAddress VARCHAR(144), ServerPort INT(5), SpotifyPREFIX VARCHAR(100), Lang VARCHAR(10), SpotifyStatus INT(1), RotatingList INT(1), RotatingTime INT(3));";
 
          ExecSql(sql, conn);
       }

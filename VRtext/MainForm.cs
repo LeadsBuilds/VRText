@@ -26,7 +26,7 @@ namespace VRText
         
         private string _selectedMessage = "";
         
-        private decimal _loadedRotatingTime;
+        private decimal _loadedRotatingTime = 10;
         public string language;
 
         public List<KeyValuePair<string, string>> lang;
@@ -275,8 +275,8 @@ namespace VRText
             serverPort = OSC.GetAddressPort().ToString();
             spotifyPrefix = SpotifyHandler.getPrefix();
             lang = language;
-            spotifyStatus = spotifyCheckBox.Checked.ToString();
-            rotateList = rotateCheckBox.Checked.ToString();
+            spotifyStatus = spotifyCheckBox.Checked ? "1" : "0";
+            rotateList = rotateCheckBox.Checked ? "1" : "0";
             rotatingTime = "10";
 
             if (loadSettings.Any())
