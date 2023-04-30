@@ -118,30 +118,15 @@ namespace VRText
             this.rotatingTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.rotatingTime.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rotatingTime.ForeColor = System.Drawing.Color.White;
-            this.rotatingTime.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            this.rotatingTime.Increment = new decimal(new int[] { 5, 0, 0, 0 });
             this.rotatingTime.Location = new System.Drawing.Point(645, 488);
-            this.rotatingTime.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.rotatingTime.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            this.rotatingTime.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            this.rotatingTime.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
             this.rotatingTime.Name = "rotatingTime";
             this.rotatingTime.Size = new System.Drawing.Size(81, 25);
             this.rotatingTime.TabIndex = 7;
-            this.rotatingTime.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.rotatingTime.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            this.rotatingTime.ValueChanged += new System.EventHandler(this.rotatingTime_ValueChanged);
             // 
             // rotateCheckBox
             // 
@@ -149,7 +134,7 @@ namespace VRText
             this.rotateCheckBox.AutoSize = true;
             this.rotateCheckBox.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rotateCheckBox.ForeColor = System.Drawing.Color.Snow;
-            this.rotateCheckBox.Location = new System.Drawing.Point(528, 490);
+            this.rotateCheckBox.Location = new System.Drawing.Point(525, 491);
             this.rotateCheckBox.Name = "rotateCheckBox";
             this.rotateCheckBox.Size = new System.Drawing.Size(116, 21);
             this.rotateCheckBox.TabIndex = 8;
@@ -174,11 +159,11 @@ namespace VRText
             this.sendAgainButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.sendAgainButton.FlatAppearance.BorderSize = 2;
             this.sendAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendAgainButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendAgainButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendAgainButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.sendAgainButton.Location = new System.Drawing.Point(787, 256);
+            this.sendAgainButton.Location = new System.Drawing.Point(787, 268);
             this.sendAgainButton.Name = "sendAgainButton";
-            this.sendAgainButton.Size = new System.Drawing.Size(91, 30);
+            this.sendAgainButton.Size = new System.Drawing.Size(134, 30);
             this.sendAgainButton.TabIndex = 11;
             this.sendAgainButton.Text = "Resend";
             this.sendAgainButton.UseVisualStyleBackColor = false;
@@ -189,12 +174,13 @@ namespace VRText
             this.spotifyLabel.AutoSize = true;
             this.spotifyLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spotifyLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.spotifyLabel.Location = new System.Drawing.Point(172, 484);
+            this.spotifyLabel.Location = new System.Drawing.Point(144, 480);
             this.spotifyLabel.Margin = new System.Windows.Forms.Padding(5);
             this.spotifyLabel.MaximumSize = new System.Drawing.Size(350, 40);
             this.spotifyLabel.Name = "spotifyLabel";
-            this.spotifyLabel.Size = new System.Drawing.Size(0, 17);
+            this.spotifyLabel.Size = new System.Drawing.Size(98, 17);
             this.spotifyLabel.TabIndex = 13;
+            this.spotifyLabel.Text = "Spotify warning";
             this.spotifyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.spotifyLabel.Visible = false;
             // 
@@ -218,7 +204,7 @@ namespace VRText
             this.addButtonLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.addButtonLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.addButtonLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.addButtonLabel.Location = new System.Drawing.Point(716, 386);
+            this.addButtonLabel.Location = new System.Drawing.Point(726, 387);
             this.addButtonLabel.Name = "addButtonLabel";
             this.addButtonLabel.Padding = new System.Windows.Forms.Padding(5);
             this.addButtonLabel.Size = new System.Drawing.Size(39, 25);
@@ -247,14 +233,14 @@ namespace VRText
             this.MoveItemDownButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MoveItemDownButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
             this.MoveItemDownButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.MoveItemDownButton.Image = global::VRText.Properties.Resources.arrow_down;
+            this.MoveItemDownButton.Image = global::VRText.Properties.Resources.arrowdown;
             this.MoveItemDownButton.Location = new System.Drawing.Point(787, 205);
             this.MoveItemDownButton.Name = "MoveItemDownButton";
             this.MoveItemDownButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.MoveItemDownButton.Size = new System.Drawing.Size(91, 29);
+            this.MoveItemDownButton.Size = new System.Drawing.Size(134, 29);
             this.MoveItemDownButton.TabIndex = 26;
             this.MoveItemDownButton.UseVisualStyleBackColor = false;
-            this.MoveItemDownButton.Click += new System.EventHandler(this.button2_Click);
+            this.MoveItemDownButton.Click += new System.EventHandler(this.arrowDownButton_Click);
             // 
             // MoveItemUpButton
             // 
@@ -264,13 +250,14 @@ namespace VRText
             this.MoveItemUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MoveItemUpButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F);
             this.MoveItemUpButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.MoveItemUpButton.Image = global::VRText.Properties.Resources.arrow_up;
+            this.MoveItemUpButton.Image = global::VRText.Properties.Resources.arrowup;
             this.MoveItemUpButton.Location = new System.Drawing.Point(787, 135);
             this.MoveItemUpButton.Name = "MoveItemUpButton";
-            this.MoveItemUpButton.Size = new System.Drawing.Size(91, 29);
+            this.MoveItemUpButton.Size = new System.Drawing.Size(134, 29);
             this.MoveItemUpButton.TabIndex = 25;
+            this.MoveItemUpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.MoveItemUpButton.UseVisualStyleBackColor = false;
-            this.MoveItemUpButton.Click += new System.EventHandler(this.button1_Click);
+            this.MoveItemUpButton.Click += new System.EventHandler(this.arrowUpButton_Click);
             // 
             // aboutButton
             // 
@@ -279,13 +266,13 @@ namespace VRText
             this.aboutButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.aboutButton.FlatAppearance.BorderSize = 2;
             this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutButton.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutButton.ForeColor = System.Drawing.Color.White;
             this.aboutButton.Image = global::VRText.Properties.Resources.info;
             this.aboutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aboutButton.Location = new System.Drawing.Point(811, 50);
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(77, 30);
+            this.aboutButton.Size = new System.Drawing.Size(110, 30);
             this.aboutButton.TabIndex = 19;
             this.aboutButton.Text = "About";
             this.aboutButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -339,13 +326,13 @@ namespace VRText
             this.removeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(113)))), ((int)(((byte)(115)))));
             this.removeButton.FlatAppearance.BorderSize = 2;
             this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
+            this.removeButton.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.removeButton.Image = global::VRText.Properties.Resources.bin;
             this.removeButton.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.removeButton.Location = new System.Drawing.Point(787, 170);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(91, 29);
+            this.removeButton.Size = new System.Drawing.Size(134, 29);
             this.removeButton.TabIndex = 10;
             this.removeButton.Text = "Remove selected";
             this.removeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -391,7 +378,7 @@ namespace VRText
             this.ClearListButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.ClearListButton.Location = new System.Drawing.Point(787, 304);
             this.ClearListButton.Name = "ClearListButton";
-            this.ClearListButton.Size = new System.Drawing.Size(91, 30);
+            this.ClearListButton.Size = new System.Drawing.Size(134, 30);
             this.ClearListButton.TabIndex = 27;
             this.ClearListButton.Text = "Clear";
             this.ClearListButton.UseVisualStyleBackColor = false;
@@ -420,7 +407,7 @@ namespace VRText
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
-            this.ClientSize = new System.Drawing.Size(892, 528);
+            this.ClientSize = new System.Drawing.Size(933, 528);
             this.Controls.Add(this.ClearListButton);
             this.Controls.Add(this.MoveItemDownButton);
             this.Controls.Add(this.MoveItemUpButton);
@@ -453,7 +440,6 @@ namespace VRText
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

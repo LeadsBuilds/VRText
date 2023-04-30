@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Swan;
 using VRText.Utils;
 using VRText.Handlers;
 using VRText.Spotify;
 using VRText.Config;
 using VRText.src.VRText.UI;
-using System.Globalization;
 
 namespace VRText
 {
     public partial class MainForm : Form
     {
-        Interval interval = new Interval();
         System.Timers.Timer intervalTimer;
-        private string selectedMessage = "";
-
+        System.Timers.Timer checkTypingTimer;
+        
+        private readonly Interval _interval = new Interval();
+        private readonly Interval _indicatorInterval = new Interval();
+        private bool _isTyping;
+        private bool _isTypingState;
+        
+        private string _selectedMessage = "";
+        
         public string language;
 
         public List<KeyValuePair<string, string>> lang;
@@ -39,11 +45,12 @@ namespace VRText
                 this.lang = currentLanguage;
             }
             
-
             InitializeComponent();
+            InitDataBase();
+            InitializeSettings();
             SetComponentLanguage(this);
-            initListView(MessageList);
-            initParams();
+            InitListView(MessageList);
+            InitParams();
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -86,6 +93,35 @@ namespace VRText
             });
         }
 
+        private void HandleTypingIndicator()
+        {
+            var changeText = textInput.Text;
+            _indicatorInterval.setTimeout(() =>
+            {
+                if (textInput.Text == changeText)
+                {
+                    MessageHandler.SendTypingIndicator(false);
+                    _isTypingState = false;
+                    _isTyping = false;
+                }
+            },800);
+
+            if (!_isTyping)
+            {
+                _isTyping = true;
+                return;
+            }
+            
+            if (_isTyping && !_isTypingState)
+            {
+                _isTypingState = true;
+                MessageHandler.SendTypingIndicator(true);
+                return;
+            }
+            
+            _isTyping = true;
+        }
+
         private void textInput_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -97,15 +133,23 @@ namespace VRText
             }
         }
 
-        private void initListView(ListView listView)
+        private void InitListView(ListView listView)
         {
             listView.OwnerDraw = true;
             listView.Columns.Add("Message", -2, HorizontalAlignment.Left);
             listView.Columns.Add("Sent At", -2, HorizontalAlignment.Left);
     
             listView.BorderStyle = BorderStyle.FixedSingle;
+
+            var messages = SQLiteHandler.GetAllMessages();
             
-            this.ResizeListViewColumns(listView);
+            foreach (var message in messages)
+            {
+                var item = new ListViewItem(new[] { message[0], message[1] });
+                listView.Items.Add(item);
+            }
+            
+            ResizeListViewColumns(listView);
         }
 
         private void ResizeListViewColumns(ListView listView)
@@ -118,17 +162,20 @@ namespace VRText
         {
             if (!rotateCheckBox.Checked)
             {
-                this.interval.Stop(intervalTimer);
+                this._interval.Stop(intervalTimer);
+                SQLiteHandler.SetCheckBoxStatus(false, "rotate");
+                
                 return;
             }
 
             if (spotifyCheckBox.Checked)
             {
                 spotifyCheckBox.Checked = false;
-                this.interval.Stop(this.intervalTimer);
+                this._interval.Stop(this.intervalTimer);
             }
-
-            this.intervalTimer = this.interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
+            
+            SQLiteHandler.SetCheckBoxStatus(true, "rotate");
+            this.intervalTimer = this._interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
         }
         private void spotifyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -136,20 +183,20 @@ namespace VRText
             if (!spotifyCheckBox.Checked)
             {
                 spotifyLabel.Visible = false;
-                this.interval.Stop(intervalTimer);
-
+                this._interval.Stop(intervalTimer);
+                SQLiteHandler.SetCheckBoxStatus(false, "spotify");
+                
                 return;
             }
 
             if (rotateCheckBox.Checked)
             {
                 rotateCheckBox.Checked = false;
-                this.interval.Stop(this.intervalTimer);
+                this._interval.Stop(this.intervalTimer);
             }
 
-            var spotifyLabelInterval = new Interval();
-
-            this.intervalTimer = this.interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
+            SQLiteHandler.SetCheckBoxStatus(true, "spotify");
+            this.intervalTimer = this._interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -162,18 +209,20 @@ namespace VRText
             {
                 TypingLabel.Text = "";
             }
+            
+            HandleTypingIndicator();
         }
 
         private void MessageList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             var currentItem = e.Item.Text;
-            this.selectedMessage = currentItem;
+            this._selectedMessage = currentItem;
         }
 
         private void sendAgainButton_Click(object sender, EventArgs e)
         {
             textInput.Select();
-            textInput.Text = selectedMessage;
+            textInput.Text = _selectedMessage;
             textInput.Select(textInput.Text.Length, 0);
         }
 
@@ -195,10 +244,66 @@ namespace VRText
             MessageHandler.addToList(MessageList, textInput.Text);
         }
 
-        private void initParams()
+        private void InitParams()
         {
             textInput.PlaceHolderText = this.lang.SingleOrDefault(x => x.Key == "placeHolder").Value;
             cooldownLabel.Text = this.lang.SingleOrDefault(x => x.Key == "cooldown").Value;
+        }
+
+        private void InitDataBase()
+        {
+            SQLiteHandler.init();
+        }
+        
+        private void InitializeSettings()
+        {
+            var loadSettings = SQLiteHandler.LoadSettings();
+            string serverAddress;
+            string serverPort;
+            string spotifyPrefix;
+            string lang;
+            string spotifyStatus;
+            string rotateList;
+            string rotateTime;
+
+            serverAddress = OSC.GetAddress();
+            serverPort = OSC.GetAddressPort().ToString();
+            spotifyPrefix = SpotifyHandler.getPrefix();
+            lang = language;
+            spotifyStatus = spotifyCheckBox.Checked ? "1" : "0";
+            rotateList = rotateCheckBox.Checked ? "1" : "0";
+            rotateTime = rotatingTime.Value.ToString();
+
+            if (loadSettings.Any())
+            {
+                var settingsValues = loadSettings[0];
+                
+                serverAddress = settingsValues[0];
+                serverPort = settingsValues[1];
+                spotifyPrefix = settingsValues[2];
+                lang = settingsValues[3];
+                spotifyStatus = settingsValues[4];
+                rotateList = settingsValues[5];
+                rotateTime = settingsValues[6];
+
+                var loadedLang = new Lang(lang).GetCurrentLanguage();
+                if (language != null)
+                {
+                    this.lang = loadedLang;
+                }
+
+                OSC.SetNewAddress(serverAddress, serverPort);
+                SpotifyHandler.setPrefix(spotifyPrefix);
+            }
+            
+            spotifyCheckBox.Checked = spotifyStatus.ToBoolean();
+            rotateCheckBox.Checked = rotateList.ToBoolean();
+            rotatingTime.Value = Int16.Parse(rotateTime);
+
+            string[] data = { serverAddress, serverPort, spotifyPrefix, lang, spotifyStatus, rotateList, rotateTime };
+            
+            if (!loadSettings.Any()) SQLiteHandler.InitSettings(data);
+
         }
 
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
@@ -223,7 +328,7 @@ namespace VRText
         {
             foreach (Control ctrl in parentControl.Controls)
             {
-                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput" };
+                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput", "rotatingTime" };
                 
                 // Check if control should be excluded from translation
                 if (excludedControls.Contains(ctrl.Name))
@@ -238,14 +343,14 @@ namespace VRText
                 ctrl.Text = obj.Value;
             }
 
-            initParams();
+            InitParams();
         }
 
         ///
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            //InitializeSettings();
         }
 
         private void settingsButton_MouseHover(object sender, EventArgs e)
@@ -289,7 +394,7 @@ namespace VRText
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void arrowUpButton_Click(object sender, EventArgs e)
         {
             MessageList.BeginUpdate();
 
@@ -304,9 +409,21 @@ namespace VRText
             }
 
             MessageList.EndUpdate();
+            SQLiteHandler.DeleteAllMessages();
+
+            foreach (ListViewItem item in MessageList.Items)
+            {
+                var message = item.SubItems[0].Text;
+                var createdAt = item.SubItems[1].Text;
+                var messageList = new List<string>();
+                messageList.Add(message);
+                messageList.Add(createdAt);
+                
+                SQLiteHandler.InsertNewMessage(messageList);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void arrowDownButton_Click(object sender, EventArgs e)
         {
 
             MessageList.BeginUpdate();
@@ -322,6 +439,18 @@ namespace VRText
             }
 
             MessageList.EndUpdate();
+            SQLiteHandler.DeleteAllMessages();
+
+            foreach (ListViewItem item in MessageList.Items)
+            {
+                var message = item.SubItems[0].Text;
+                var createdAt = item.SubItems[1].Text;
+                var messageList = new List<string>();
+                messageList.Add(message);
+                messageList.Add(createdAt);
+                
+                SQLiteHandler.InsertNewMessage(messageList);
+            }
         }
 
         private void ClearListButton_Click(object sender, EventArgs e)
@@ -330,6 +459,13 @@ namespace VRText
             {
                 MessageList.Items.Remove(item);
             }
+
+            SQLiteHandler.DeleteAllMessages();
+        }
+
+        private void rotatingTime_ValueChanged(object sender, EventArgs e)
+        {
+            SQLiteHandler.UpdateRotatingTime(rotatingTime.Value);
         }
     }
 

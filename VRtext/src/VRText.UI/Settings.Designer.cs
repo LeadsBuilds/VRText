@@ -52,17 +52,10 @@ namespace VRText.src.VRText.UI
             this.languageOptions.Font = new System.Drawing.Font("Segoe UI Historic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.languageOptions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.languageOptions.FormattingEnabled = true;
-            this.languageOptions.Items.AddRange(new object[] {
-            "English",
-            "Português do Brasil",
-            "Deutsch",
-            "Italiano",
-            "Français",
-            "Norsk"
-            });
+            this.languageOptions.Items.AddRange(new object[] { "English", "Português do Brasil", "Deutsch", "Español", "Italiano", "Français" });
             this.languageOptions.Location = new System.Drawing.Point(27, 102);
             this.languageOptions.Name = "languageOptions";
-            this.languageOptions.Size = new System.Drawing.Size(153, 28);
+            this.languageOptions.Size = new System.Drawing.Size(165, 28);
             this.languageOptions.TabIndex = 19;
             this.languageOptions.SelectedIndexChanged += new System.EventHandler(this.languageOptions_SelectedIndexChanged);
             // 
@@ -86,7 +79,7 @@ namespace VRText.src.VRText.UI
             this.testConnectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.testConnectionButton.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.testConnectionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.testConnectionButton.Location = new System.Drawing.Point(209, 208);
+            this.testConnectionButton.Location = new System.Drawing.Point(209, 217);
             this.testConnectionButton.Name = "testConnectionButton";
             this.testConnectionButton.Size = new System.Drawing.Size(97, 29);
             this.testConnectionButton.TabIndex = 22;
@@ -105,7 +98,7 @@ namespace VRText.src.VRText.UI
             this.serverAddressInput.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.serverAddressInput.MaxLength = 144;
             this.serverAddressInput.Name = "serverAddressInput";
-            this.serverAddressInput.Size = new System.Drawing.Size(188, 25);
+            this.serverAddressInput.Size = new System.Drawing.Size(215, 25);
             this.serverAddressInput.TabIndex = 23;
             this.serverAddressInput.Text = "Server address";
             this.serverAddressInput.WordWrap = false;
@@ -118,9 +111,9 @@ namespace VRText.src.VRText.UI
             this.portInput.ForeColor = System.Drawing.Color.White;
             this.portInput.Location = new System.Drawing.Point(210, 151);
             this.portInput.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.portInput.MaxLength = 144;
+            this.portInput.MaxLength = 5;
             this.portInput.Name = "portInput";
-            this.portInput.Size = new System.Drawing.Size(188, 25);
+            this.portInput.Size = new System.Drawing.Size(215, 25);
             this.portInput.TabIndex = 24;
             this.portInput.Text = "Port";
             this.portInput.WordWrap = false;
@@ -128,7 +121,7 @@ namespace VRText.src.VRText.UI
             // OSCConnectionLabel
             // 
             this.OSCConnectionLabel.AutoSize = true;
-            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
+            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OSCConnectionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.OSCConnectionLabel.Location = new System.Drawing.Point(209, 72);
             this.OSCConnectionLabel.Name = "OSCConnectionLabel";
@@ -141,11 +134,11 @@ namespace VRText.src.VRText.UI
             // 
             this.testLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.testLabel.AutoSize = true;
-            this.testLabel.Font = new System.Drawing.Font("Segoe UI Historic", 5F);
+            this.testLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.testLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.testLabel.Location = new System.Drawing.Point(225, 184);
+            this.testLabel.Location = new System.Drawing.Point(230, 184);
             this.testLabel.Name = "testLabel";
-            this.testLabel.Size = new System.Drawing.Size(161, 21);
+            this.testLabel.Size = new System.Drawing.Size(175, 22);
             this.testLabel.TabIndex = 27;
             this.testLabel.Text = "Test sent over 127.0.0.1:8000";
             this.testLabel.UseCompatibleTextRendering = true;
@@ -173,7 +166,7 @@ namespace VRText.src.VRText.UI
             this.SpotifyPrefixInput.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
             this.SpotifyPrefixInput.MaxLength = 30;
             this.SpotifyPrefixInput.Name = "SpotifyPrefixInput";
-            this.SpotifyPrefixInput.Size = new System.Drawing.Size(153, 25);
+            this.SpotifyPrefixInput.Size = new System.Drawing.Size(165, 25);
             this.SpotifyPrefixInput.TabIndex = 29;
             this.SpotifyPrefixInput.Text = "Listening to: ";
             this.SpotifyPrefixInput.WordWrap = false;
@@ -187,9 +180,9 @@ namespace VRText.src.VRText.UI
             this.ResetSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetSettings.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
             this.ResetSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.ResetSettings.Location = new System.Drawing.Point(324, 208);
+            this.ResetSettings.Location = new System.Drawing.Point(312, 217);
             this.ResetSettings.Name = "ResetSettings";
-            this.ResetSettings.Size = new System.Drawing.Size(73, 29);
+            this.ResetSettings.Size = new System.Drawing.Size(113, 29);
             this.ResetSettings.TabIndex = 30;
             this.ResetSettings.Text = "Reset";
             this.ResetSettings.UseMnemonic = false;
@@ -201,7 +194,7 @@ namespace VRText.src.VRText.UI
             this.CopyrightLabel.AutoSize = true;
             this.CopyrightLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9F);
             this.CopyrightLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
-            this.CopyrightLabel.Location = new System.Drawing.Point(12, 247);
+            this.CopyrightLabel.Location = new System.Drawing.Point(12, 259);
             this.CopyrightLabel.Name = "CopyrightLabel";
             this.CopyrightLabel.Size = new System.Drawing.Size(98, 20);
             this.CopyrightLabel.TabIndex = 31;
@@ -214,9 +207,9 @@ namespace VRText.src.VRText.UI
             this.GitHub.AutoSize = true;
             this.GitHub.Font = new System.Drawing.Font("Microsoft Tai Le", 9F);
             this.GitHub.LinkColor = System.Drawing.Color.LightGray;
-            this.GitHub.Location = new System.Drawing.Point(222, 247);
+            this.GitHub.Location = new System.Drawing.Point(266, 259);
             this.GitHub.Name = "GitHub";
-            this.GitHub.Size = new System.Drawing.Size(176, 16);
+            this.GitHub.Size = new System.Drawing.Size(177, 16);
             this.GitHub.TabIndex = 33;
             this.GitHub.TabStop = true;
             this.GitHub.Text = "https://github.com/LeadsBuilds";
@@ -225,7 +218,7 @@ namespace VRText.src.VRText.UI
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::VRText.Properties.Resources.settings_header;
+            this.pictureBox1.Image = global::VRText.Properties.Resources.settingsheader;
             this.pictureBox1.Location = new System.Drawing.Point(27, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(199, 50);
@@ -237,7 +230,7 @@ namespace VRText.src.VRText.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
-            this.ClientSize = new System.Drawing.Size(410, 272);
+            this.ClientSize = new System.Drawing.Size(455, 284);
             this.Controls.Add(this.GitHub);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.CopyrightLabel);
@@ -258,10 +251,10 @@ namespace VRText.src.VRText.UI
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VRText - Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

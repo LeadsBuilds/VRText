@@ -1,9 +1,7 @@
-# VRText Alpha - Release Update 1.0.0.2
+# VRText Alpha - Update 1.0.0.5
 An OSC based chatbox tool for VRChat.
 
-Currently it only works with the Chatbox in-game utilizing OSC endpoints specified by the VRChat team. New features will be implemented in the future.
-
-I'm proud to announce that VRText's got its first release, the executable is already available for download.
+Currently it only works with the Chatbox in-game utilizing OSC endpoints specified by the VRChat team.
 
 ![VRText application screen - Alpha version](GitContent/demo.png "VRText application screen - Alpha version")
 
