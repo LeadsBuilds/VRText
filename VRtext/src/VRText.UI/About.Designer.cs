@@ -33,6 +33,7 @@ namespace VRText.src.VRText.UI
             this.inspirationLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.additionsLabel = new System.Windows.Forms.Label();
+            this.translationLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,6 +95,21 @@ namespace VRText.src.VRText.UI
             this.additionsLabel.TabIndex = 4;
             this.additionsLabel.Text = "Additions by Myrkur";
             // 
+            // translationLabel
+            // 
+            this.translationLabel.AutoSize = true;
+            this.translationLabel.BackColor = System.Drawing.Color.Transparent;
+            this.translationLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
+            this.translationLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.translationLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.translationLabel.Location = new System.Drawing.Point(12, 26);
+            this.translationLabel.Name = "translationLabel";
+            this.translationLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.translationLabel.MaximumSize = new System.Drawing.Size(92, 100);
+            this.translationLabel.AutoSize = true;
+            this.translationLabel.TabIndex = 4;
+            this.translationLabel.Text = "Translations by Myrkur\nDexElDino";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::VRText.Properties.Resources.shoot;
@@ -121,19 +137,19 @@ namespace VRText.src.VRText.UI
             this.ControlBox = false;
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.additionsLabel);
+            this.Controls.Add(this.translationLabel);
             this.Controls.Add(this.inspirationLabel);
             this.Controls.Add(this.developerLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(15, 15);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutForm";
-            this.Opacity = 0.85D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About";
             this.TransparencyKey = System.Drawing.Color.Black;
             this.Deactivate += new System.EventHandler(this.AboutForm_Deactivate);
             this.Load += new System.EventHandler(this.AboutForm_Load);
@@ -152,5 +168,6 @@ namespace VRText.src.VRText.UI
         private System.Windows.Forms.Label inspirationLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label additionsLabel;
+        private System.Windows.Forms.Label translationLabel;
     }
 }
