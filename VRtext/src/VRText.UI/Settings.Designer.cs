@@ -121,11 +121,11 @@ namespace VRText.src.VRText.UI
             // OSCConnectionLabel
             // 
             this.OSCConnectionLabel.AutoSize = true;
-            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 9F);
+            this.OSCConnectionLabel.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OSCConnectionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(227)))), ((int)(((byte)(249)))));
             this.OSCConnectionLabel.Location = new System.Drawing.Point(209, 72);
             this.OSCConnectionLabel.Name = "OSCConnectionLabel";
-            this.OSCConnectionLabel.Size = new System.Drawing.Size(141, 21);
+            this.OSCConnectionLabel.Size = new System.Drawing.Size(188, 27);
             this.OSCConnectionLabel.TabIndex = 25;
             this.OSCConnectionLabel.Text = "OSC Connection Settings";
             this.OSCConnectionLabel.UseCompatibleTextRendering = true;
@@ -251,6 +251,7 @@ namespace VRText.src.VRText.UI
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VRText - Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

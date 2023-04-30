@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Swan;
 using VRText.Utils;
@@ -26,7 +24,6 @@ namespace VRText
         
         private string _selectedMessage = "";
         
-        private decimal _loadedRotatingTime = 10;
         public string language;
 
         public List<KeyValuePair<string, string>> lang;
@@ -49,10 +46,11 @@ namespace VRText
             }
             
             InitializeComponent();
-            InitParams();
             InitDataBase();
+            InitializeSettings();
             SetComponentLanguage(this);
             InitListView(MessageList);
+            InitParams();
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -106,7 +104,7 @@ namespace VRText
                     _isTypingState = false;
                     _isTyping = false;
                 }
-            },500);
+            },800);
 
             if (!_isTyping)
             {
@@ -152,7 +150,6 @@ namespace VRText
             }
             
             ResizeListViewColumns(listView);
-            this.rotatingTime.Value = this._loadedRotatingTime;
         }
 
         private void ResizeListViewColumns(ListView listView)
@@ -256,8 +253,6 @@ namespace VRText
         private void InitDataBase()
         {
             SQLiteHandler.init();
-            InitializeSettings();
-
         }
         
         private void InitializeSettings()
@@ -269,7 +264,7 @@ namespace VRText
             string lang;
             string spotifyStatus;
             string rotateList;
-            string rotatingTime;
+            string rotateTime;
 
             serverAddress = OSC.GetAddress();
             serverPort = OSC.GetAddressPort().ToString();
@@ -277,7 +272,7 @@ namespace VRText
             lang = language;
             spotifyStatus = spotifyCheckBox.Checked ? "1" : "0";
             rotateList = rotateCheckBox.Checked ? "1" : "0";
-            rotatingTime = "10";
+            rotateTime = rotatingTime.Value.ToString();
 
             if (loadSettings.Any())
             {
@@ -289,7 +284,7 @@ namespace VRText
                 lang = settingsValues[3];
                 spotifyStatus = settingsValues[4];
                 rotateList = settingsValues[5];
-                rotatingTime = settingsValues[6];
+                rotateTime = settingsValues[6];
 
                 var loadedLang = new Lang(lang).GetCurrentLanguage();
                 if (language != null)
@@ -297,15 +292,15 @@ namespace VRText
                     this.lang = loadedLang;
                 }
 
-                spotifyCheckBox.Checked = spotifyStatus.ToBoolean();
-                rotateCheckBox.Checked = rotateList.ToBoolean();
-                this._loadedRotatingTime = Int16.Parse(rotatingTime);
-                
                 OSC.SetNewAddress(serverAddress, serverPort);
                 SpotifyHandler.setPrefix(spotifyPrefix);
             }
+            
+            spotifyCheckBox.Checked = spotifyStatus.ToBoolean();
+            rotateCheckBox.Checked = rotateList.ToBoolean();
+            rotatingTime.Value = Int16.Parse(rotateTime);
 
-            string[] data = { serverAddress, serverPort, spotifyPrefix, lang, spotifyStatus, rotateList, rotatingTime };
+            string[] data = { serverAddress, serverPort, spotifyPrefix, lang, spotifyStatus, rotateList, rotateTime };
             
             if (!loadSettings.Any()) SQLiteHandler.InitSettings(data);
 
@@ -333,7 +328,7 @@ namespace VRText
         {
             foreach (Control ctrl in parentControl.Controls)
             {
-                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput" };
+                var excludedControls = new HashSet<string> { "logoLabel", "GitHub", "languageOptions", "CopyrightLabel", "serverAddressInput", "portInput", "SpotifyPrefixInput", "rotatingTime" };
                 
                 // Check if control should be excluded from translation
                 if (excludedControls.Contains(ctrl.Name))
@@ -355,7 +350,7 @@ namespace VRText
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            //InitializeSettings();
         }
 
         private void settingsButton_MouseHover(object sender, EventArgs e)

@@ -99,6 +99,7 @@ namespace VRText.Handlers
          var command = new SQLiteCommand(sql, conn); 
          var reader = command.ExecuteReader();
          var rows = new List<string[]>();
+         
          while (reader.Read())
          {
             string[] row = { reader.GetString(0), reader.GetInt16(1).ToString(), reader.GetString(2), 

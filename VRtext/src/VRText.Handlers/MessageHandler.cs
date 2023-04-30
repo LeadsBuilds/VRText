@@ -29,7 +29,7 @@ namespace VRText.Handlers
 
         public static void saveLog(ListView listView, string message)
         {
-            var createdAt = DateTime.Now.ToString("m/d/y HH:mm:ss.fff");
+            var createdAt = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
             var item = new ListViewItem(new[] { message, createdAt});
             var messageArray = new List<string>();
             messageArray.Add(message);
@@ -90,7 +90,7 @@ namespace VRText.Handlers
 
         public static void addToList(ListView listView, string message)
         {
-            var createdAt = DateTime.Now.ToString("M/d/y HH:mm:ss.fff");
+            var createdAt = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff");
             var item = new ListViewItem(new[] { message, createdAt });
             
             var messageArray = new List<string>();

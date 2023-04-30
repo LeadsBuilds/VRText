@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
 using System.Windows.Forms;
-using VRText.SharpOSC;
 using VRText.Config;
 using VRText.Utils;
 using VRText.Spotify;
-using System.Threading;
-using System.Net.Sockets;
 using VRText.Handlers;
 using OscMessage = VRText.SharpOSC.OscMessage;
 using UDPSender = VRText.SharpOSC.UDPSender;
@@ -57,7 +47,7 @@ namespace VRText.src.VRText.UI
                 serverAddressInput.Text = serverAddress;
                 portInput.Text = serverPort;
                 SpotifyPrefixInput.Text = spotifyPrefix;
-                
+
                 SQLiteHandler.UpdateLanguageSettings(lang);
                 SQLiteHandler.UpdateOSCSettings(serverAddress, serverPort);
             }
@@ -203,6 +193,11 @@ namespace VRText.src.VRText.UI
         private void GitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/LeadsBuilds");
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
