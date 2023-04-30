@@ -43,11 +43,11 @@ namespace VRText.src.VRText.UI
             // 
             this.developerLabel.AutoSize = true;
             this.developerLabel.BackColor = System.Drawing.Color.Transparent;
-            this.developerLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.developerLabel.Font = new System.Drawing.Font("Malgun Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.developerLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.developerLabel.Location = new System.Drawing.Point(84, 1);
+            this.developerLabel.Location = new System.Drawing.Point(87, 6);
             this.developerLabel.Name = "developerLabel";
-            this.developerLabel.Size = new System.Drawing.Size(197, 21);
+            this.developerLabel.Size = new System.Drawing.Size(192, 20);
             this.developerLabel.TabIndex = 2;
             this.developerLabel.Text = "Developed by LeadsBuilds ";
             this.developerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -57,14 +57,13 @@ namespace VRText.src.VRText.UI
             // 
             this.inspirationLabel.AutoSize = true;
             this.inspirationLabel.BackColor = System.Drawing.Color.Transparent;
-            this.inspirationLabel.Font = new System.Drawing.Font("Malgun Gothic", 10F);
+            this.inspirationLabel.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inspirationLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.inspirationLabel.Location = new System.Drawing.Point(38, 152);
+            this.inspirationLabel.Location = new System.Drawing.Point(52, 163);
             this.inspirationLabel.Name = "inspirationLabel";
-            this.inspirationLabel.Size = new System.Drawing.Size(300, 95);
+            this.inspirationLabel.Size = new System.Drawing.Size(257, 75);
             this.inspirationLabel.TabIndex = 3;
-            this.inspirationLabel.Text = " We were born to try\r\nTo see each other through\r\nTo know and love ourselves and o" +
-    "thers as well\r\nIs the most difficult and meaningful work\r\nWe\'ll ever do";
+            this.inspirationLabel.Text = " We were born to try\r\nTo see each other through\r\nTo know and love ourselves and o" + "thers as well\r\nIs the most difficult and meaningful work\r\nWe\'ll ever do";
             this.inspirationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // nameLabel
@@ -73,10 +72,11 @@ namespace VRText.src.VRText.UI
             this.nameLabel.BackColor = System.Drawing.Color.Transparent;
             this.nameLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
             this.nameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.nameLabel.Location = new System.Drawing.Point(237, 24);
+            this.nameLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nameLabel.Location = new System.Drawing.Point(236, 26);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Padding = new System.Windows.Forms.Padding(3);
-            this.nameLabel.Size = new System.Drawing.Size(78, 19);
+            this.nameLabel.Size = new System.Drawing.Size(86, 19);
             this.nameLabel.TabIndex = 4;
             this.nameLabel.Text = "AKA Downluck";
             // 
@@ -86,7 +86,8 @@ namespace VRText.src.VRText.UI
             this.additionsLabel.BackColor = System.Drawing.Color.Transparent;
             this.additionsLabel.Font = new System.Drawing.Font("Malgun Gothic", 8F);
             this.additionsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.additionsLabel.Location = new System.Drawing.Point(249, 43);
+            this.additionsLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.additionsLabel.Location = new System.Drawing.Point(245, 45);
             this.additionsLabel.Name = "additionsLabel";
             this.additionsLabel.Padding = new System.Windows.Forms.Padding(3);
             this.additionsLabel.Size = new System.Drawing.Size(117, 19);
@@ -96,9 +97,9 @@ namespace VRText.src.VRText.UI
             // pictureBox1
             // 
             this.pictureBox1.Image = global::VRText.Properties.Resources.shoot;
-            this.pictureBox1.Location = new System.Drawing.Point(113, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(110, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(138, 150);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -140,12 +141,12 @@ namespace VRText.src.VRText.UI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label developerLabel;
         private System.Windows.Forms.Label inspirationLabel;
