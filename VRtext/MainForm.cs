@@ -16,11 +16,17 @@ namespace VRText
 {
     public partial class MainForm : Form
     {
-        Interval interval = new Interval();
         System.Timers.Timer intervalTimer;
-        private string selectedMessage = "";
-        private decimal loadedRotatingTime;
-
+        System.Timers.Timer checkTypingTimer;
+        
+        private readonly Interval _interval = new Interval();
+        private readonly Interval _indicatorInterval = new Interval();
+        private bool _isTyping;
+        private bool _isTypingState;
+        
+        private string _selectedMessage = "";
+        
+        private decimal _loadedRotatingTime;
         public string language;
 
         public List<KeyValuePair<string, string>> lang;
@@ -89,6 +95,35 @@ namespace VRText
             });
         }
 
+        private void HandleTypingIndicator()
+        {
+            var changeText = textInput.Text;
+            _indicatorInterval.setTimeout(() =>
+            {
+                if (textInput.Text == changeText)
+                {
+                    MessageHandler.SendTypingIndicator(false);
+                    _isTypingState = false;
+                    _isTyping = false;
+                }
+            },500);
+
+            if (!_isTyping)
+            {
+                _isTyping = true;
+                return;
+            }
+            
+            if (_isTyping && !_isTypingState)
+            {
+                _isTypingState = true;
+                MessageHandler.SendTypingIndicator(true);
+                return;
+            }
+            
+            _isTyping = true;
+        }
+
         private void textInput_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -117,7 +152,7 @@ namespace VRText
             }
             
             ResizeListViewColumns(listView);
-            this.rotatingTime.Value = this.loadedRotatingTime;
+            this.rotatingTime.Value = this._loadedRotatingTime;
         }
 
         private void ResizeListViewColumns(ListView listView)
@@ -130,7 +165,7 @@ namespace VRText
         {
             if (!rotateCheckBox.Checked)
             {
-                this.interval.Stop(intervalTimer);
+                this._interval.Stop(intervalTimer);
                 SQLiteHandler.SetCheckBoxStatus(false, "rotate");
                 
                 return;
@@ -139,11 +174,11 @@ namespace VRText
             if (spotifyCheckBox.Checked)
             {
                 spotifyCheckBox.Checked = false;
-                this.interval.Stop(this.intervalTimer);
+                this._interval.Stop(this.intervalTimer);
             }
             
             SQLiteHandler.SetCheckBoxStatus(true, "rotate");
-            this.intervalTimer = this.interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
+            this.intervalTimer = this._interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
         }
         private void spotifyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -151,7 +186,7 @@ namespace VRText
             if (!spotifyCheckBox.Checked)
             {
                 spotifyLabel.Visible = false;
-                this.interval.Stop(intervalTimer);
+                this._interval.Stop(intervalTimer);
                 SQLiteHandler.SetCheckBoxStatus(false, "spotify");
                 
                 return;
@@ -160,13 +195,11 @@ namespace VRText
             if (rotateCheckBox.Checked)
             {
                 rotateCheckBox.Checked = false;
-                this.interval.Stop(this.intervalTimer);
+                this._interval.Stop(this.intervalTimer);
             }
 
-            var spotifyLabelInterval = new Interval();
-            
             SQLiteHandler.SetCheckBoxStatus(true, "spotify");
-            this.intervalTimer = this.interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
+            this.intervalTimer = this._interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
         }
 
         private void textInput_TextChanged(object sender, EventArgs e)
@@ -179,18 +212,20 @@ namespace VRText
             {
                 TypingLabel.Text = "";
             }
+            
+            HandleTypingIndicator();
         }
 
         private void MessageList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             var currentItem = e.Item.Text;
-            this.selectedMessage = currentItem;
+            this._selectedMessage = currentItem;
         }
 
         private void sendAgainButton_Click(object sender, EventArgs e)
         {
             textInput.Select();
-            textInput.Text = selectedMessage;
+            textInput.Text = _selectedMessage;
             textInput.Select(textInput.Text.Length, 0);
         }
 
@@ -264,7 +299,7 @@ namespace VRText
 
                 spotifyCheckBox.Checked = spotifyStatus.ToBoolean();
                 rotateCheckBox.Checked = rotateList.ToBoolean();
-                this.loadedRotatingTime = Int16.Parse(rotatingTime);
+                this._loadedRotatingTime = Int16.Parse(rotatingTime);
                 
                 OSC.SetNewAddress(serverAddress, serverPort);
                 SpotifyHandler.setPrefix(spotifyPrefix);
