@@ -126,6 +126,7 @@ namespace VRText
             this.rotatingTime.Size = new System.Drawing.Size(81, 25);
             this.rotatingTime.TabIndex = 7;
             this.rotatingTime.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            this.rotatingTime.ValueChanged += new System.EventHandler(this.rotatingTime_ValueChanged);
             // 
             // rotateCheckBox
             // 
@@ -239,7 +240,7 @@ namespace VRText
             this.MoveItemDownButton.Size = new System.Drawing.Size(134, 29);
             this.MoveItemDownButton.TabIndex = 26;
             this.MoveItemDownButton.UseVisualStyleBackColor = false;
-            this.MoveItemDownButton.Click += new System.EventHandler(this.button2_Click);
+            this.MoveItemDownButton.Click += new System.EventHandler(this.arrowDownButton_Click);
             // 
             // MoveItemUpButton
             // 
@@ -256,7 +257,7 @@ namespace VRText
             this.MoveItemUpButton.TabIndex = 25;
             this.MoveItemUpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.MoveItemUpButton.UseVisualStyleBackColor = false;
-            this.MoveItemUpButton.Click += new System.EventHandler(this.button1_Click);
+            this.MoveItemUpButton.Click += new System.EventHandler(this.arrowUpButton_Click);
             // 
             // aboutButton
             // 

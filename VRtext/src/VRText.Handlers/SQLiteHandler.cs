@@ -21,7 +21,7 @@ namespace VRText.Handlers
       {
          SQLiteConnection conn;
          // Create a new database connection:
-         conn = new SQLiteConnection("Data Source=|DataDirectory|vrtext.db;Version = 3;New = True;Compress = True;");
+         conn = new SQLiteConnection("Data Source=|DataDirectory|\\VRText\\vrtext.db;Version = 3;New = True;Compress = True;");
          // Open the connection:
          try
          {
@@ -101,7 +101,8 @@ namespace VRText.Handlers
          var rows = new List<string[]>();
          while (reader.Read())
          {
-            string[] row = { reader.GetString(0), reader.GetInt16(1).ToString(), reader.GetString(2), reader.GetString(3) };
+            string[] row = { reader.GetString(0), reader.GetInt16(1).ToString(), reader.GetString(2), 
+               reader.GetString(3), reader.GetBoolean(4).ToString(), reader.GetBoolean(5).ToString(), reader.GetInt16(6).ToString() };
             rows.Add(row);
          }
 
@@ -147,6 +148,41 @@ namespace VRText.Handlers
          
          ExecSql(command.CommandText, conn, command);
       }
+
+      public static void SetCheckBoxStatus(bool status, string type)
+      {
+         SQLiteConnection conn = CreateConnection();
+         var sql = "";
+         switch (type) {
+            case "spotify":
+               sql = "UPDATE settings SET SpotifyStatus=:status";
+               break;
+            default:
+               sql = "UPDATE settings SET RotatingList=:status";
+               break;
+         }
+
+         var command = new SQLiteCommand(conn);
+         command.CommandText = sql;
+         command.Parameters.Add("status", DbType.Boolean).Value = status;
+         command.Prepare();
+         
+         ExecSql(command.CommandText, conn, command);
+      }
+
+      public static void UpdateRotatingTime(decimal time)
+      {
+         SQLiteConnection conn = CreateConnection();
+         var sql = "UPDATE settings SET RotatingTime=:time";
+         
+         var command = new SQLiteCommand(conn);
+         command.CommandText = sql;
+         command.Parameters.Add("time", DbType.Int16).Value = time;
+         command.Prepare();
+         
+         ExecSql(command.CommandText, conn, command);
+      }
+
       public static void InitSettings(string[] data)
       {
          SQLiteConnection conn = CreateConnection();
@@ -154,13 +190,19 @@ namespace VRText.Handlers
          var serverPort = data[1];
          var spotifyPrefix = data[2];
          var lang = data[3];
+         var spotifyStatus = data[4];
+         var rotatingList = data[5];
+         var rotatingTime = data[6];
 
          var command = conn.CreateCommand();
-         command.CommandText = "INSERT INTO settings (ServerAddress, ServerPort, SpotifyPREFIX, Lang) VALUES(@serverAddress, @serverPort, @spotifyPrefix, @lang);";
+         command.CommandText = "INSERT INTO settings (ServerAddress, ServerPort, SpotifyPREFIX, Lang, SpotifyStatus, RotatingList, RotatingTime) VALUES(@serverAddress, @serverPort, @spotifyPrefix, @lang, @spotifyStatus, @rotatingList, @rotatingTime);";
          command.Parameters.AddWithValue("@serverAddress", serverAddress);
          command.Parameters.AddWithValue("@serverPort", serverPort);
          command.Parameters.AddWithValue("@spotifyPrefix", spotifyPrefix);
          command.Parameters.AddWithValue("@lang", lang);
+         command.Parameters.AddWithValue("@spotifyStatus", spotifyStatus);
+         command.Parameters.AddWithValue("@rotatingList", rotatingList);
+         command.Parameters.AddWithValue("@rotatingTime", rotatingTime);
          command.Prepare();
          
          ExecSql(command.CommandText, conn, command);
@@ -188,7 +230,7 @@ namespace VRText.Handlers
       
       static void CreateSettingsTable(SQLiteConnection conn)
       {
-         string sql = "CREATE TABLE IF NOT EXISTS settings (ServerAddress VARCHAR(144), ServerPort INT(5), SpotifyPREFIX VARCHAR(100), Lang VARCHAR(10));";
+         string sql = "CREATE TABLE IF NOT EXISTS settings (ServerAddress VARCHAR(144), ServerPort INT(5), SpotifyPREFIX VARCHAR(100), Lang VARCHAR(10), SpotifyStatus BOOLEAN, RotatingList BOOLEAN, RotatingTime INT(3));";
 
          ExecSql(sql, conn);
       }

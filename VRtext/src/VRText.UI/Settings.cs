@@ -34,42 +34,33 @@ namespace VRText.src.VRText.UI
         private void InitializeSettings()
         {
             var loadSettings = SQLiteHandler.LoadSettings();
-            string serverAddress;
-            string serverPort;
-            string spotifyPrefix;
-            string lang;
-            
-            serverAddress = OSC.getAddress();
-            serverPort = OSC.getAddressPort().ToString();
-            spotifyPrefix = SpotifyHandler.getPrefix();
-            lang = mainForm.language;
 
             if (loadSettings.Any())
             {
                 var settingsValues = loadSettings[0];
                 
-                serverAddress = settingsValues[0];
-                serverPort = settingsValues[1];
-                spotifyPrefix = settingsValues[2];
-                lang = settingsValues[3];
-                
+                var serverAddress = settingsValues[0];
+                var serverPort = settingsValues[1];
+                var spotifyPrefix = settingsValues[2];
+                var lang = settingsValues[3];
+
                 var language = new Lang(lang).GetCurrentLanguage();
                 if (language != null)
                 {
-                    this.mainForm.lang = language;
+                    mainForm.lang = language;
+                    mainForm.language = lang;
                 }
                 
-                this.mainForm.SetComponentLanguage(mainForm);
-                this.mainForm.SetComponentLanguage(this);
+                mainForm.SetComponentLanguage(mainForm);
+                mainForm.SetComponentLanguage(this);
+                
+                serverAddressInput.Text = serverAddress;
+                portInput.Text = serverPort;
+                SpotifyPrefixInput.Text = spotifyPrefix;
+                
+                SQLiteHandler.UpdateLanguageSettings(lang);
+                SQLiteHandler.UpdateOSCSettings(serverAddress, serverPort);
             }
-
-            serverAddressInput.Text = serverAddress;
-            portInput.Text = serverPort;
-            SpotifyPrefixInput.Text = spotifyPrefix;
-
-            string[] data = { serverAddress, serverPort, spotifyPrefix, lang };
-            
-            if (!loadSettings.Any()) SQLiteHandler.InitSettings(data);
 
         }
 
@@ -158,17 +149,34 @@ namespace VRText.src.VRText.UI
         {
             var address = serverAddressInput.Text;
             var port = int.Parse(portInput.Text);
+
+            if (!OSC.IsValidateIp(address))
+            {
+                new ErrorHandler().Show("Invalid IP Address", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error, true);
+                
+                return;
+            }
+            
+            if (port > 65535 || port <= 1024)
+            {
+                new ErrorHandler().Show("The specified port is out of range", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error, true);
+                
+                return;
+            }
+
             var delay = new Interval();
-            var inputMessage = new OscMessage(OSC.getTypingEndPoint(), true);
+            var inputMessage = new OscMessage(OSC.GetTypingEndPoint(), true);
             var sendMessage = new UDPSender(address, port);
 
             sendMessage.Send(inputMessage);
             testLabel.Visible = true;
             testLabel.Text = "Test sent over: " + address + ":" + port;
-            OSC.setNewAddress(address, portInput.Text);
+            OSC.SetNewAddress(address, portInput.Text);
             delay.setTimeout(() =>
             {
-                inputMessage = new OscMessage(OSC.getTypingEndPoint(), false);
+                inputMessage = new OscMessage(OSC.GetTypingEndPoint(), false);
                 sendMessage.Send(inputMessage);
             }, 2000);
         }
@@ -178,7 +186,7 @@ namespace VRText.src.VRText.UI
             var serverAddress = "127.0.0.1";
             var serverPort = "9000";
 
-            OSC.setNewAddress(serverAddress, serverPort);
+            OSC.SetNewAddress(serverAddress, serverPort);
             serverAddressInput.Text = serverAddress;
             portInput.Text = serverPort;
             testLabel.Text = "Default settings have been set.";

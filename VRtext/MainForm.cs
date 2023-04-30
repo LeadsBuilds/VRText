@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Swan;
 using VRText.Utils;
 using VRText.Handlers;
 using VRText.Spotify;
@@ -17,6 +19,7 @@ namespace VRText
         Interval interval = new Interval();
         System.Timers.Timer intervalTimer;
         private string selectedMessage = "";
+        private decimal loadedRotatingTime;
 
         public string language;
 
@@ -114,6 +117,7 @@ namespace VRText
             }
             
             ResizeListViewColumns(listView);
+            this.rotatingTime.Value = this.loadedRotatingTime;
         }
 
         private void ResizeListViewColumns(ListView listView)
@@ -127,6 +131,8 @@ namespace VRText
             if (!rotateCheckBox.Checked)
             {
                 this.interval.Stop(intervalTimer);
+                SQLiteHandler.SetCheckBoxStatus(false, "rotate");
+                
                 return;
             }
 
@@ -135,7 +141,8 @@ namespace VRText
                 spotifyCheckBox.Checked = false;
                 this.interval.Stop(this.intervalTimer);
             }
-
+            
+            SQLiteHandler.SetCheckBoxStatus(true, "rotate");
             this.intervalTimer = this.interval.Set(() => MessageHandler.Rotate(MessageList), (int)rotatingTime.Value * 1000);
         }
         private void spotifyCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -145,7 +152,8 @@ namespace VRText
             {
                 spotifyLabel.Visible = false;
                 this.interval.Stop(intervalTimer);
-
+                SQLiteHandler.SetCheckBoxStatus(false, "spotify");
+                
                 return;
             }
 
@@ -156,7 +164,8 @@ namespace VRText
             }
 
             var spotifyLabelInterval = new Interval();
-
+            
+            SQLiteHandler.SetCheckBoxStatus(true, "spotify");
             this.intervalTimer = this.interval.Set(() => SpotifyHandler.SendOverOSC(), (int)rotatingTime.Value * 100);
         }
 
@@ -212,13 +221,59 @@ namespace VRText
         private void InitDataBase()
         {
             SQLiteHandler.init();
-            var loadedLang = SQLiteHandler.GetLanguage();
+            InitializeSettings();
 
-            if (loadedLang != this.language && loadedLang != "")
+        }
+        
+        private void InitializeSettings()
+        {
+            var loadSettings = SQLiteHandler.LoadSettings();
+            string serverAddress;
+            string serverPort;
+            string spotifyPrefix;
+            string lang;
+            string spotifyStatus;
+            string rotateList;
+            string rotatingTime;
+
+            serverAddress = OSC.GetAddress();
+            serverPort = OSC.GetAddressPort().ToString();
+            spotifyPrefix = SpotifyHandler.getPrefix();
+            lang = language;
+            spotifyStatus = spotifyCheckBox.Checked.ToString();
+            rotateList = rotateCheckBox.Checked.ToString();
+            rotatingTime = "10";
+
+            if (loadSettings.Any())
             {
-                this.lang = new Lang(loadedLang).GetCurrentLanguage();
-                this.language = loadedLang;
+                var settingsValues = loadSettings[0];
+                
+                serverAddress = settingsValues[0];
+                serverPort = settingsValues[1];
+                spotifyPrefix = settingsValues[2];
+                lang = settingsValues[3];
+                spotifyStatus = settingsValues[4];
+                rotateList = settingsValues[5];
+                rotatingTime = settingsValues[6];
+
+                var loadedLang = new Lang(lang).GetCurrentLanguage();
+                if (language != null)
+                {
+                    this.lang = loadedLang;
+                }
+
+                spotifyCheckBox.Checked = spotifyStatus.ToBoolean();
+                rotateCheckBox.Checked = rotateList.ToBoolean();
+                this.loadedRotatingTime = Int16.Parse(rotatingTime);
+                
+                OSC.SetNewAddress(serverAddress, serverPort);
+                SpotifyHandler.setPrefix(spotifyPrefix);
             }
+
+            string[] data = { serverAddress, serverPort, spotifyPrefix, lang, spotifyStatus, rotateList, rotatingTime };
+            
+            if (!loadSettings.Any()) SQLiteHandler.InitSettings(data);
+
         }
 
         private void MessageList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
@@ -309,7 +364,7 @@ namespace VRText
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void arrowUpButton_Click(object sender, EventArgs e)
         {
             MessageList.BeginUpdate();
 
@@ -324,9 +379,21 @@ namespace VRText
             }
 
             MessageList.EndUpdate();
+            SQLiteHandler.DeleteAllMessages();
+
+            foreach (ListViewItem item in MessageList.Items)
+            {
+                var message = item.SubItems[0].Text;
+                var createdAt = item.SubItems[1].Text;
+                var messageList = new List<string>();
+                messageList.Add(message);
+                messageList.Add(createdAt);
+                
+                SQLiteHandler.InsertNewMessage(messageList);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void arrowDownButton_Click(object sender, EventArgs e)
         {
 
             MessageList.BeginUpdate();
@@ -342,6 +409,18 @@ namespace VRText
             }
 
             MessageList.EndUpdate();
+            SQLiteHandler.DeleteAllMessages();
+
+            foreach (ListViewItem item in MessageList.Items)
+            {
+                var message = item.SubItems[0].Text;
+                var createdAt = item.SubItems[1].Text;
+                var messageList = new List<string>();
+                messageList.Add(message);
+                messageList.Add(createdAt);
+                
+                SQLiteHandler.InsertNewMessage(messageList);
+            }
         }
 
         private void ClearListButton_Click(object sender, EventArgs e)
@@ -353,15 +432,10 @@ namespace VRText
 
             SQLiteHandler.DeleteAllMessages();
         }
-        
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            string[] dependencyFolders = { "x86", "x64" };
 
-            foreach (var folder in dependencyFolders)
-            {
-                Directory.Delete(folder, true);
-            }
+        private void rotatingTime_ValueChanged(object sender, EventArgs e)
+        {
+            SQLiteHandler.UpdateRotatingTime(rotatingTime.Value);
         }
     }
 

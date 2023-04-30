@@ -111,7 +111,7 @@ namespace VRText.src.VRText.UI
             this.portInput.ForeColor = System.Drawing.Color.White;
             this.portInput.Location = new System.Drawing.Point(210, 151);
             this.portInput.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.portInput.MaxLength = 144;
+            this.portInput.MaxLength = 5;
             this.portInput.Name = "portInput";
             this.portInput.Size = new System.Drawing.Size(215, 25);
             this.portInput.TabIndex = 24;

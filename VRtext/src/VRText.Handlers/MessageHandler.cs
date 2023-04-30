@@ -41,8 +41,8 @@ namespace VRText.Handlers
 
         public static void sendMessage(string message)
         {
-            var inputMessage = new OscMessage(OSC.getChatEndpoint(), message, true);
-            var sendMessage = new UDPSender(OSC.getAddress(), OSC.getAddressPort());
+            var inputMessage = new OscMessage(OSC.GetChatEndpoint(), message, true);
+            var sendMessage = new UDPSender(OSC.GetAddress(), OSC.GetAddressPort());
             
             try
             {
@@ -58,8 +58,8 @@ namespace VRText.Handlers
         // implement this, currently cant do that until placeholder text code is more firmly understood
         public static void SendTypingIndicator(bool state)
         {
-            var inputMessage = new OscMessage(OSC.getTypingEndPoint(), state);
-            var sendMessage = new UDPSender(OSC.getAddress(), OSC.getAddressPort());
+            var inputMessage = new OscMessage(OSC.GetTypingEndPoint(), state);
+            var sendMessage = new UDPSender(OSC.GetAddress(), OSC.GetAddressPort());
             sendMessage.Send(inputMessage);
             
         }
