@@ -327,6 +327,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SQLite\x64\SQLite.Interop.dll" />
+    <EmbeddedResource Include="Resources\SQLite\x86\SQLite.Interop.dll" />
     <EmbeddedResource Include="src\VRText.UI\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>

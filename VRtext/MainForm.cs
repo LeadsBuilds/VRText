@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using VRText.Utils;
@@ -206,9 +207,6 @@ namespace VRText
         {
             textInput.PlaceHolderText = this.lang.SingleOrDefault(x => x.Key == "placeHolder").Value;
             cooldownLabel.Text = this.lang.SingleOrDefault(x => x.Key == "cooldown").Value;
-
-            AppDomain.CurrentDomain.SetData("DataDirectory",
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
         }
 
         private void InitDataBase()
@@ -354,6 +352,16 @@ namespace VRText
             }
 
             SQLiteHandler.DeleteAllMessages();
+        }
+        
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string[] dependencyFolders = { "x86", "x64" };
+
+            foreach (var folder in dependencyFolders)
+            {
+                Directory.Delete(folder, true);
+            }
         }
     }
 

@@ -27,9 +27,9 @@ namespace VRText.Handlers
          {
             conn.Open();
          }
-         catch (Exception ex)
+         catch (Exception e)
          {
-
+            throw new Exception("Error: " + e.Message);
          }
          
          return conn;
