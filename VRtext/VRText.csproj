@@ -381,14 +381,14 @@
     </Content>
     <None Include="Resources\add2.png" />
     <None Include="Resources\add.png" />
-    <None Include="Resources\settings-header-1.png" />
-    <None Include="Resources\settings-header.png" />
+    <None Include="Resources\settingsheader1.png" />
+    <None Include="Resources\settingsheader.png" />
     <EmbeddedResource Include="Resources\acoustic.mp3" />
     <Content Include="icon.ico" />
     <Content Include="iconmulti.ico" />
     <None Include="Resources\bin.png" />
-    <None Include="Resources\arrow-down.png" />
-    <None Include="Resources\arrow-up.png" />
+    <None Include="Resources\arrowdown.png" />
+    <None Include="Resources\arrowup.png" />
     <None Include="Resources\send.png" />
     <None Include="Resources\info.png" />
     <None Include="Resources\settings.png" />
