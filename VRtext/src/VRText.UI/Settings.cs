@@ -142,16 +142,14 @@ namespace VRText.src.VRText.UI
 
             if (!OSC.IsValidateIp(address))
             {
-                new ErrorHandler().Show("Invalid IP Address", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error, true);
+                MessageBox.Show("You need to provide a valid IP Address.", "VRText - Invalid IP Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
                 return;
             }
             
             if (port > 65535 || port <= 1024)
             {
-                new ErrorHandler().Show("The specified port is out of range", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error, true);
+                MessageBox.Show("The valid port range is 1025-65535", "VRText - Port out of range", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
                 return;
             }
