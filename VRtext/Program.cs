@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using NLog;
 
 namespace VRText
 {
@@ -28,6 +29,11 @@ namespace VRText
 #if  DEBUG
             // AllocConsole();
 #endif
+            LogManager.Setup().LoadConfiguration(builder => {
+                builder.ForLogger().FilterMinLevel(LogLevel.Info).WriteToConsole();
+                builder.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToFile(fileName: "log.txt");
+            });
+            
             Application.Run(new MainForm());
         }
 
