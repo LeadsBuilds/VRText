@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using NLog;
+using VRText.Handlers;
 
 namespace VRText
 {
@@ -22,40 +22,45 @@ namespace VRText
         [STAThread]
         static void Main()
         {
-            InitializeFolders();
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 #if  DEBUG
             // AllocConsole();
 #endif
-            LogManager.Setup().LoadConfiguration(builder => {
-                builder.ForLogger().FilterMinLevel(LogLevel.Info).WriteToConsole();
-                builder.ForLogger().FilterMinLevel(LogLevel.Debug).WriteToFile(fileName: "log.txt");
-            });
-            
-            Application.Run(new MainForm());
+            try
+            {
+                InitializeFolders();
+                Application.Run(new MainForm());
+            }
+            catch (Exception e)
+            {
+                new ErrorHandler().Show(e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error: " + e.Message);
+            }
         }
 
         static void InitializeFolders()
         {
-            var appDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var appDataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\VRText";
             
             AppDomain.CurrentDomain.SetData("DataDirectory", appDataDirectory);
 
-            var dllDirectory = appDataDirectory.Replace(@"\", "/") + "/VRText";
+            var dllDirectory = appDataDirectory.Replace(@"\", "/");
 
             string[] SQLiteDllFolders = { "x86", "x64" };
             
             foreach (var folder in SQLiteDllFolders) {
+                var pathDir = $"{appDataDirectory}\\{folder}";
+                Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + pathDir);
+                
                 bool exists = Directory.Exists($"{dllDirectory}/{folder}");
                 if(!exists) Directory.CreateDirectory($"{dllDirectory}/{folder}");
             }
             
-            MoveSqLiteDlls(SQLiteDllFolders, dllDirectory);
+            CreateResources(SQLiteDllFolders, dllDirectory);
         }
 
-        static void MoveSqLiteDlls(string[] folders, string dllDirectory)
+        static void CreateResources(string[] folders, string dllDirectory)
         {
             foreach (var folder in folders)
             {
@@ -64,9 +69,15 @@ namespace VRText
                 using (var stream = ExecutingAssembly.GetManifestResourceStream(resourceName[0]))
                 {
                     var fileDirectory = $"{dllDirectory}/{folder}";
-                        
-                    Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + fileDirectory);
-                    stream.CopyTo(File.Create($"{fileDirectory}/{fileName}"));
+                    if (!File.Exists($"{fileDirectory}/{fileName}")) {
+                        stream.CopyTo(File.Create($"{fileDirectory}/{fileName}"));
+
+                        if (folder == "x64")
+                        {
+                            Application.Restart();
+                            Environment.Exit(0);
+                        }
+                    }
                 }
             }
         }

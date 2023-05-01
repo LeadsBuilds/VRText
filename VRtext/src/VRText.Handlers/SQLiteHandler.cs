@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace VRText.Handlers
 {
@@ -21,7 +22,7 @@ namespace VRText.Handlers
       {
          SQLiteConnection conn;
          // Create a new database connection:
-         conn = new SQLiteConnection("Data Source=|DataDirectory|\\VRText\\vrtext.db;Version = 3;New = True;Compress = True;");
+         conn = new SQLiteConnection("Data Source=|DataDirectory|vrtext.db;Version = 3;New = True;Compress = True;");
          // Open the connection:
          try
          {
@@ -29,7 +30,7 @@ namespace VRText.Handlers
          }
          catch (Exception e)
          {
-            throw new Exception("Error: " + e.Message);
+            errorHandlerSQLite.Show(e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
          
          return conn;
